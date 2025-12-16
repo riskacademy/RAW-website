@@ -91,7 +91,13 @@ export default function PastEvents() {
                                 </p>
                             )}
 
-                            <Button href={`#raw-${event.year}`} variant="secondary" className="w-full text-sm py-3 mt-auto">
+                            <Button
+                                href={`https://${event.year}.riskawarenessweek.com`}
+                                variant="secondary"
+                                className="w-full text-sm py-3 mt-auto"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 Access RAW {event.year}
                             </Button>
                         </Card>

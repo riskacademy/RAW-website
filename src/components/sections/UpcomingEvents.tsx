@@ -30,7 +30,7 @@ export default function UpcomingEvents() {
                             <p className="text-gray-400 text-sm md:text-base" style={{ marginBottom: '40px' }}>
                                 Interested in running a special purpose RAW event or hosting a physical RAW event in your country?
                             </p>
-                            <Button href="#contact" variant="secondary">
+                            <Button href="mailto:alex.ausrisk@gmail.com" variant="secondary">
                                 Contact Us
                             </Button>
                         </div>
