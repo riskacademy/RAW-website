@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import JsonLd from "@/components/seo/JsonLd";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -52,6 +53,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <JsonLd />
       </body>
     </html>
   );
