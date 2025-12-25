@@ -53,7 +53,7 @@ export default function Button({
             className={combinedClassName}
             style={{ paddingLeft: '48px', paddingRight: '48px' }}
             disabled={disabled}
-            {...props}
+            {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
         >
             {children}
         </button>
