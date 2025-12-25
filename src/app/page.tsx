@@ -4,9 +4,9 @@ import WhyAttend from '@/components/sections/WhyAttend';
 import UpcomingEvents from '@/components/sections/UpcomingEvents';
 import PastEvents from '@/components/sections/PastEvents';
 import Faculty from '@/components/sections/Faculty';
-import PracticalValue from '@/components/sections/PracticalValue';
-import JustificationKit from '@/components/sections/JustificationKit';
-import Newsletter from '@/components/sections/Newsletter';
+// import PracticalValue from '@/components/sections/PracticalValue';
+// import JustificationKit from '@/components/sections/JustificationKit';
+// import Newsletter from '@/components/sections/Newsletter';
 import FAQ from '@/components/sections/FAQ';
 
 export default function Home() {
@@ -15,13 +15,13 @@ export default function Home() {
       <HeroSection />
       <WhatIsRAW />
       <WhyAttend />
-      <UpcomingEvents />
-      <PastEvents />
       <Faculty />
-      <PracticalValue />
-      <JustificationKit />
-      <Newsletter />
+      <PastEvents />
       <FAQ />
+      <UpcomingEvents />
+      {/* <PracticalValue /> */}
+      {/* <JustificationKit /> */}
+      {/* <Newsletter /> */}
     </>
   );
 }

@@ -76,19 +76,73 @@ export default function JsonLd() {
                 "offers": {
                     "@type": "Offer",
                     "url": "https://riskawarenessweek.com/register",
-                    "price": "100.00",
+                    "price": "0.00",
                     "priceCurrency": "USD",
                     "name": "Full Series Pass / Archive Access",
                     "description": "Access to 200+ world-class workshops on-demand, available for lifetime viewing."
                 }
             },
 
-            { "@type": "Person", "@id": "https://riskawarenessweek.com/#DouglasHubbardFaculty", "name": "Douglas Hubbard", "jobTitle": "Author, How to Measure Anything" },
-            { "@type": "Person", "@id": "https://riskawarenessweek.com/#SamSavageFaculty", "name": "Sam Savage", "jobTitle": "Executive Director, ProbabilityManagement.org" },
-            { "@type": "Person", "@id": "https://riskawarenessweek.com/#LeoTilmanFaculty", "name": "Leo Tilman", "jobTitle": "Chairman & CEO, Agilion Systems" },
-            { "@type": "Person", "@id": "https://riskawarenessweek.com/#NormanMarksFaculty", "name": "Norman Marks", "jobTitle": "Global Thought Leader, Retired CRO" },
-            { "@type": "Person", "@id": "https://riskawarenessweek.com/#AlexSidorenkoFaculty", "name": "Alex Sidorenko", "jobTitle": "Head of Risk and Insurance, Serra Verde" },
-            { "@type": "Person", "@id": "https://riskawarenessweek.com/#MicheleWuckerFaculty", "name": "Michele Wucker" },
+            {
+                "@type": "Person",
+                "@id": "https://riskawarenessweek.com/#DouglasHubbardFaculty",
+                "name": "Douglas Hubbard",
+                "jobTitle": "Creator of Applied Information Economics (AIE)",
+                "description": "Creator of Applied Information Economics (AIE) and author of \"How to Measure Anything\"",
+                "image": "https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-for-charity-copy/HRs4hgL2zfkLXKjHe6Vvw4_square_medium.png",
+                "sameAs": ["https://www.linkedin.com/in/dwhubbard/"]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://riskawarenessweek.com/#SamSavageFaculty",
+                "name": "Dr. Sam Savage",
+                "jobTitle": "Author of \"The Flaw of Averages\"",
+                "description": "Author of \"The Flaw of Averages\" and inventor of the SIPmath probability standard",
+                "image": "https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-week-2024-copy/f4owjsE8cKtLSiC3UUEchb.jpg_square_medium.jpg",
+                "sameAs": ["https://www.linkedin.com/in/sam-s-623674/"]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://riskawarenessweek.com/#LeoTilmanFaculty",
+                "name": "Leo Tilman",
+                "jobTitle": "CEO of Agilion Systems",
+                "description": "CEO of Agilion Systems, co-author of \"Agility\" and \"Financial Darwinism\"",
+                "image": "https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-week-2024-copy/kuU77FB7UjvDU3jRrmfMQQ.jpg_square_medium.jpg",
+                "sameAs": ["https://www.linkedin.com/in/leo-m-tilman-b76170a0/"]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://riskawarenessweek.com/#NormanMarksFaculty",
+                "name": "Norman Marks",
+                "jobTitle": "Author of \"World-Class Risk Management\"",
+                "description": "Author of \"World-Class Risk Management\" and globally recognized GRC mentor",
+                "image": "https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-for-charity-copy/CkcjhWFGFuLywKibY9xX2Q_square_medium.jpg",
+                "sameAs": ["http://www.linkedin.com/in/normanmarks/"]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://riskawarenessweek.com/#AlexSidorenkoFaculty",
+                "name": "Alex Sidorenko",
+                "jobTitle": "FERMA 2021 Risk Manager of the Year",
+                "description": "FERMA 2021 Risk Manager of the Year, expert in quantitative risk analysis",
+                "image": "https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-week-2020-copy-1/JnrXfaEC5AAXUPiaKz3dT7_square_medium.jpg",
+                "sameAs": [
+                    "https://www.linkedin.com/in/alexsidorenko/",
+                    "https://www.youtube.com/@riskacademy"
+                ]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://riskawarenessweek.com/#MicheleWuckerFaculty",
+                "name": "Michele Wucker",
+                "jobTitle": "Founder and CEO, Gray Rhino & Company",
+                "description": "Author of \"The Gray Rhino\" and expert on predictable high-impact risks",
+                "image": "https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-week-2022-copy/RfeZiLriytRrqbkxo4kXdc.jpeg_square_medium.jpeg",
+                "sameAs": [
+                    "https://www.linkedin.com/in/wucker/",
+                    "https://www.facebook.com/MicheleWucker"
+                ]
+            },
             { "@type": "Person", "@id": "https://riskawarenessweek.com/#GrantPurdyFaculty", "name": "Grant Purdy" },
             { "@type": "Person", "@id": "https://riskawarenessweek.com/#GeoffTrickeyFaculty", "name": "Geoff Trickey" },
             { "@type": "Person", "@id": "https://riskawarenessweek.com/#HansLæssøeFaculty", "name": "Hans Læssøe" },

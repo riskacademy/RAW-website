@@ -29,14 +29,14 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#sponsorship" className="text-gray-400 hover:text-purple-400 transition-colors">
+                                <a href="mailto:alex.ausrisk@gmail.com" className="text-gray-400 hover:text-purple-400 transition-colors">
                                     Sponsorship Opportunities
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href="#contact" className="text-gray-400 hover:text-purple-400 transition-colors">
+                                <a href="mailto:alex.ausrisk@gmail.com" className="text-gray-400 hover:text-purple-400 transition-colors">
                                     Contact Support
-                                </Link>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -68,7 +68,7 @@ export default function Footer() {
                         <h4 className="text-lg font-semibold text-white mb-4">Connect</h4>
                         <div className="flex flex-col space-y-2">
                             <a
-                                href="https://riskacademy.blog/"
+                                href="https://riskacademy.blog"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-400 hover:text-purple-400 transition-colors"
@@ -76,7 +76,7 @@ export default function Footer() {
                                 Risk Academy Blog
                             </a>
                             <a
-                                href="https://www.youtube.com/@RISKACADEMY"
+                                href="https://www.youtube.com/@RISK-ACADEMY"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-400 hover:text-purple-400 transition-colors"
@@ -84,20 +84,12 @@ export default function Footer() {
                                 YouTube
                             </a>
                             <a
-                                href="https://ru.linkedin.com/in/alexsidorenko"
+                                href="https://www.linkedin.com/company/risk-academy"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-400 hover:text-purple-400 transition-colors"
                             >
                                 LinkedIn
-                            </a>
-                            <a
-                                href="https://twitter.com/alexei_sid"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-400 hover:text-purple-400 transition-colors"
-                            >
-                                X / Twitter
                             </a>
                         </div>
                     </div>

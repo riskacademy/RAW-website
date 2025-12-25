@@ -37,49 +37,58 @@ export default function Newsletter() {
     };
 
     return (
-        <section id="newsletter" className="bg-black/20">
-            <div className="container">
-                <SectionHeader title="Planning for Best Risk Webinars 2026"
-                    subtitle="Be the first to receive the agenda and call for papers for the upcoming online risk management events in October 2026"
-                />
+        <section id="newsletter" className="bg-black/20 py-24">
+            <div className="container mx-auto px-6">
+                <div className="max-w-4xl mx-auto text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                        <span className="gradient-text">RAW 2026 Announced</span>
+                    </h2>
 
-                <div className="mx-auto" style={{ marginTop: '60px' }}>
-                    {status === 'success' ? (
-                        <div className="glass rounded-2xl text-center" style={{ padding: '48px' }}>
-                            <h3 className="text-2xl md:text-3xl font-bold text-purple-400 mb-4">
-                                Thank you for subscribing!
-                            </h3>
-                            <p className="text-gray-400 text-base md:text-lg">
-                                We&apos;ll keep you updated on RAW 2026 developments.
-                            </p>
-                        </div>
-                    ) : (
-                        <form onSubmit={handleSubmit} className="glass rounded-2xl" style={{ padding: '48px' }}>
-                            <div className="flex flex-col sm:flex-row gap-4">
-                                <input
-                                    type="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="Enter your email address"
-                                    required
-                                    disabled={status === 'loading'}
-                                    className="flex-1 !px-8 py-4 bg-white/5 border border-white/10 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors text-base disabled:opacity-50"
-                                />
+                    <p className="text-lg text-gray-300 mb-4">
+                        Scheduled for 12-17 October 2026, focusing on practical application of risk-based decision making.
+                    </p>
+
+                    <p className="text-lg text-gray-300 mb-12">
+                        No theory—only case studies from companies applying quantitative risk analysis in their processes and decisions.
+                    </p>
+
+                    <div className="max-w-md mx-auto mb-12">
+                        {status === 'success' ? (
+                            <div className="glass rounded-xl p-8 text-center border md:border-purple-500/30">
+                                <h3 className="text-xl font-bold text-purple-400 mb-2">You're on the list!</h3>
+                                <p className="text-gray-300">We'll notify you when registration opens for RAW 2026.</p>
+                            </div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                                <div className="relative">
+                                    <input
+                                        type="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        placeholder="Enter your email for early access"
+                                        required
+                                        disabled={status === 'loading'}
+                                        className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors disabled:opacity-50"
+                                    />
+                                </div>
                                 <Button
                                     variant="primary"
+                                    className="w-full py-4 text-lg"
                                     onClick={() => { }}
-                                    className={status === 'loading' ? 'opacity-70 cursor-not-allowed' : ''}
+                                    disabled={status === 'loading'}
                                 >
-                                    {status === 'loading' ? 'Subscribing...' : 'Notify Me'}
+                                    {status === 'loading' ? 'Joining...' : 'Join the Waiting List'}
                                 </Button>
-                            </div>
-                            {status === 'error' && (
-                                <p className="text-red-400 mt-4 text-center">
-                                    {errorMessage}
-                                </p>
-                            )}
-                        </form>
-                    )}
+                                {status === 'error' && (
+                                    <p className="text-red-400 text-sm mt-2">{errorMessage}</p>
+                                )}
+                            </form>
+                        )}
+                    </div>
+
+                    <p className="text-gray-400">
+                        Interested in running a special purpose RAW event or hosting a physical RAW event in your country? <a href="https://riskacademy.blog/contact-us/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 underline">Contact us</a>
+                    </p>
                 </div>
             </div>
         </section>

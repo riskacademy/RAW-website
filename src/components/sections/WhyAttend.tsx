@@ -25,19 +25,128 @@ export default function WhyAttend() {
     return (
         <section id="why-attend" className="bg-black/20">
             <div className="container">
-                <SectionHeader title="Why Attend Risk Awareness Week?" />
+                <SectionHeader title="Who Benefits From RAW" />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 mx-auto" style={{ marginTop: '60px' }}>
-                    {benefits.map((benefit, index) => (
-                        <Card key={index}>
-                            <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
-                                {benefit.title}
-                            </h3>
-                            <p className="text-gray-400 leading-relaxed">
-                                {benefit.description}
-                            </p>
-                        </Card>
-                    ))}
+                <div className="flex flex-col gap-8 mx-auto" style={{ marginTop: '60px' }}>
+                    {/* Risk & Insurance Professionals */}
+                    <Card>
+                        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+                            <div className="md:col-span-4 flex flex-col justify-between">
+                                <div>
+                                    <h3 className="text-2xl font-bold text-white mb-6">
+                                        Risk & Insurance Professionals
+                                    </h3>
+                                    <div className="hidden md:block">
+                                        <a href="#past-events" className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded transition-colors duration-300 w-full text-center">
+                                            Access Archive
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="md:col-span-8">
+                                <ul className="space-y-4">
+                                    {[
+                                        'Replace 5×5 heat maps with Monte Carlo simulations that quantify actual exposure',
+                                        'Demonstrate insurance ROI to underwriters using quantified risk controls',
+                                        'Earn CPD credits without conference travel (accepted by major professional bodies)',
+                                        'Learn from Douglas Hubbard, Sam Savage, Leo Tilman, and 50+ practitioners',
+                                        'Access 200+ on-demand workshops covering decision trees, probability modeling, and behavioral economics',
+                                        'Join 20,000+ professionals moving from compliance-focused RM1 to decision-centric RM2'
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start text-gray-400">
+                                            <span className="text-green-500 mr-3 font-bold">✓</span>
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="mt-8 md:hidden">
+                                    <a href="#past-events" className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded transition-colors duration-300 w-full text-center">
+                                        Access Archive
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </Card>
+
+                    {/* Organizations & Teams */}
+                    <Card>
+                        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+                            <div className="md:col-span-4 flex flex-col justify-between">
+                                <div>
+                                    <h3 className="text-2xl font-bold text-white mb-6">
+                                        Organizations & Teams
+                                    </h3>
+                                    <div className="hidden md:block">
+                                        <a href="/Strategic Transition to RM2 Proposal.pdf" download className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded transition-colors duration-300 w-full text-center">
+                                            Download Business Case
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="md:col-span-8">
+                                <ul className="space-y-4">
+                                    {[
+                                        'Reduce insurance premiums by demonstrating quantified risk profiles to carriers',
+                                        'Optimize contingency reserves using probability distributions instead of guesswork',
+                                        'Integrate uncertainty modeling into budgeting, forecasting, and capital planning',
+                                        'Train entire teams at fraction of traditional conference costs',
+                                        'Implement techniques used by Fortune 500 companies in mining, oil & gas, manufacturing, finance, and technology',
+                                        'Transform risk function from compliance burden into strategic profit driver'
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start text-gray-400">
+                                            <span className="text-green-500 mr-3 font-bold">✓</span>
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="mt-8 md:hidden">
+                                    <a href="/Strategic Transition to RM2 Proposal.pdf" download className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded transition-colors duration-300 w-full text-center">
+                                        Download Business Case
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </Card>
+
+                    {/* Solution Providers & Sponsors */}
+                    <Card>
+                        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+                            <div className="md:col-span-4 flex flex-col justify-between">
+                                <div>
+                                    <h3 className="text-2xl font-bold text-white mb-6">
+                                        Solution Providers & Sponsors
+                                    </h3>
+                                    <div className="hidden md:block">
+                                        <a href="mailto:alex.ausrisk@gmail.com" className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded transition-colors duration-300 w-full text-center">
+                                            Sponsorship Inquiry
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="md:col-span-8">
+                                <ul className="space-y-4">
+                                    {[
+                                        'Reach 20,000+ decision-makers who control risk budgets and vendor selection',
+                                        'Audience spans 120+ countries across mining, energy, manufacturing, finance, government, and technology',
+                                        '298 US attendees, 236 UK, 222 Australia, 118 India in 2022 alone',
+                                        '70% intermediate-to-expert practitioners actively implementing quantitative methods',
+                                        'Workshop sponsorships, exhibition booths, and branded content opportunities',
+                                        'Proven ROI: 91% attendee satisfaction, 88% excitement rating, 84% report learning new skills'
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start text-gray-400">
+                                            <span className="text-green-500 mr-3 font-bold">✓</span>
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="mt-8 md:hidden">
+                                    <a href="mailto:alex.ausrisk@gmail.com" className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded transition-colors duration-300 w-full text-center">
+                                        Sponsorship Inquiry
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </Card>
                 </div>
             </div>
         </section>

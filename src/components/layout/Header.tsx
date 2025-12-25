@@ -8,12 +8,12 @@ export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const menuItems = [
-        { label: 'What is RAW?', href: '#what-is-raw' },
-        { label: 'Why attend', href: '#why-attend' },
-        { label: 'Upcoming events', href: '#upcoming-events' },
-        { label: 'Past events', href: '#past-events' },
-        { label: 'Key speakers', href: '#speakers' },
-        { label: 'Resources', href: '#resources' },
+        { label: 'Why RAW Exists', href: '#what-is-raw' },
+        { label: 'RAW 2026', href: '#upcoming-events' },
+        { label: 'Who Benefits', href: '#why-attend' },
+        { label: 'Archive', href: '#past-events' },
+        { label: 'Faculty', href: '#speakers' },
+        { label: 'FAQ', href: '#faq' },
     ];
 
     return (

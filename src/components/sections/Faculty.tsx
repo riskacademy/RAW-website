@@ -6,18 +6,17 @@ export default function Faculty() {
     const featuredExperts = [
         {
             name: 'Douglas Hubbard',
-            role: 'Founder/President, Hubbard Decision Research',
-            bio: 'Creator of the Applied Information Economics (AIE) method and author of the bestselling book "How to Measure Anything: Finding the Value of Intangibles in Business."',
+            role: 'Creator of Applied Information Economics (AIE)',
+            bio: 'Creator of Applied Information Economics (AIE) and author of "How to Measure Anything"',
             photoUrl: 'https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-for-charity-copy/HRs4hgL2zfkLXKjHe6Vvw4_square_medium.png',
             socials: [
-                { type: 'linkedin', url: 'https://www.linkedin.com/in/dwhubbard/' },
-                { type: 'facebook', url: 'https://www.facebook.com/hubbardresearch/' }
+                { type: 'linkedin', url: 'https://www.linkedin.com/in/dwhubbard/' }
             ]
         },
         {
             name: 'Dr. Sam Savage',
-            role: 'Executive Director, ProbabilityManagement.org',
-            bio: 'Author of "The Flaw of Averages" and Adjunct Professor at Stanford University. He is the inventor of the SIPmath standard for probability management.',
+            role: 'Author of "The Flaw of Averages"',
+            bio: 'Author of "The Flaw of Averages" and inventor of the SIPmath probability standard',
             photoUrl: 'https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-week-2024-copy/f4owjsE8cKtLSiC3UUEchb.jpg_square_medium.jpg',
             socials: [
                 { type: 'linkedin', url: 'https://www.linkedin.com/in/sam-s-623674/' }
@@ -25,8 +24,8 @@ export default function Faculty() {
         },
         {
             name: 'Leo Tilman',
-            role: 'Chairman & CEO, Agilion Systems',
-            bio: 'Strategic advisor and co-author of "Agility" and "Financial Darwinism." He is a leading expert on strategy, risk, and organizational intelligence.',
+            role: 'CEO of Agilion Systems',
+            bio: 'CEO of Agilion Systems, co-author of "Agility" and "Financial Darwinism"',
             photoUrl: 'https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-week-2024-copy/kuU77FB7UjvDU3jRrmfMQQ.jpg_square_medium.jpg',
             socials: [
                 { type: 'linkedin', url: 'https://www.linkedin.com/in/leo-m-tilman-b76170a0/' }
@@ -34,8 +33,8 @@ export default function Faculty() {
         },
         {
             name: 'Norman Marks',
-            role: 'Author, thought leader, retired CAE and CRO',
-            bio: 'Author of "World-Class Risk Management" and a globally recognized mentor on GRC (Governance, Risk, and Compliance).',
+            role: 'Author of "World-Class Risk Management"',
+            bio: 'Author of "World-Class Risk Management" and globally recognized GRC mentor',
             photoUrl: 'https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-for-charity-copy/CkcjhWFGFuLywKibY9xX2Q_square_medium.jpg',
             socials: [
                 { type: 'linkedin', url: 'http://www.linkedin.com/in/normanmarks/' }
@@ -43,29 +42,32 @@ export default function Faculty() {
         },
         {
             name: 'Alex Sidorenko',
-            role: 'Head of Risk and Insurance, Serra Verde / Founder of RISK-ACADEMY',
-            bio: 'An expert in quantitative risk analysis (Risk Quant) and decision-making. He was named the FERMA Risk Manager of the Year in 2021.',
+            role: 'FERMA 2021 Risk Manager of the Year',
+            bio: 'FERMA 2021 Risk Manager of the Year, expert in quantitative risk analysis',
             photoUrl: 'https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-week-2020-copy-1/JnrXfaEC5AAXUPiaKz3dT7_square_medium.jpg',
             socials: [
                 { type: 'linkedin', url: 'https://www.linkedin.com/in/alexsidorenko/' },
-                { type: 'youtube', url: 'https://www.youtube.com/@riskacademy' },
-                { type: 'facebook', url: 'https://www.facebook.com/theriskacademy/' }
+                { type: 'youtube', url: 'https://www.youtube.com/@riskacademy' }
+            ]
+        },
+        {
+            name: 'Michele Wucker',
+            role: 'Founder and CEO, Gray Rhino & Company',
+            bio: 'Author of "The Gray Rhino" and expert on predictable high-impact risks',
+            photoUrl: 'https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-week-2022-copy/RfeZiLriytRrqbkxo4kXdc.jpeg_square_medium.jpeg',
+            socials: [
+                { type: 'linkedin', url: 'https://www.linkedin.com/in/wucker/' },
+                { type: 'facebook', url: 'https://www.facebook.com/MicheleWucker' }
             ]
         }
-    ];
-
-    const additionalExperts = [
-        'Michele Wucker', 'Grant Purdy', 'Geoff Trickey', 'Hans Læssøe',
-        'David R. Koenig', 'Roger Spitz', 'John Hollmann', 'Tom Keelin',
-        'Max Henrion', 'David Vose'
     ];
 
     return (
         <section id="speakers" className="py-24">
             <div className="container mx-auto px-6">
                 <SectionHeader
-                    title="Learn from practitioners, not sales managers"
-                    subtitle="Our speakers define the agenda for global risk events. They come from the world's leading organizations, including Chevron, Microsoft, Lockheed Martin, Allianz, and Maersk."
+                    title="Learn From Industry Leaders"
+                    subtitle="RAW speakers are practitioners, not sales managers. They define the agenda for global risk events and come from organizations including Chevron, Microsoft, Lockheed Martin, Allianz, Maersk, and NASA."
                     titleClassName="mb-12 md:mb-16"
                 />
 
@@ -122,22 +124,7 @@ export default function Faculty() {
                     ))}
                 </div>
 
-                {/* Additional experts */}
-                <div className="glass rounded-2xl" style={{ marginTop: '60px', padding: '32px' }}>
-                    <h3 className="text-2xl font-bold text-center mb-6 gradient-text">
-                        + Additional Expert Contributors
-                    </h3>
-                    <div className="flex flex-wrap justify-center gap-3">
-                        {additionalExperts.map((expert, index) => (
-                            <span
-                                key={index}
-                                className="px-4 py-2 bg-purple-500/10 text-purple-300 rounded-full text-sm border border-purple-500/30"
-                            >
-                                {expert}
-                            </span>
-                        ))}
-                    </div>
-                </div>
+                {/* Additional experts - Removed to match source text */}
             </div>
         </section>
     );

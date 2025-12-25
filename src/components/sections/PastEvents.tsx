@@ -9,37 +9,37 @@ export default function PastEvents() {
             year: '2025',
             badge: 'Latest',
             theme: 'The Future of Risk Intelligence',
-            description: 'The culmination of the RM2 journey. Focus on transforming risk teams into strategic profit drivers using AI and advanced quantification.',
-            keynote: 'Leo Tilman, Sam Savage'
+            description: 'Transform risk teams into strategic profit drivers using AI and quantification. Features Leo Tilman and Sam Savage.',
+            keynote: null
         },
         {
             year: '2024',
             theme: 'The AI Revolution',
-            description: 'Don\'t lose your job to AI. Learn how to write risk policies with LLMs, run simulations in ChatGPT, and supercharge your risk team with GenAI.',
-            keynote: 'Microsoft, Lockheed Martin'
+            description: 'Write risk policies with LLMs, run simulations in ChatGPT, supercharge teams with GenAI. Microsoft and Lockheed Martin keynotes.',
+            keynote: null
         },
         {
             year: '2023',
             theme: 'Take More Risk',
-            description: 'Shifting the mindset from risk avoidance to strategic risk-taking for competitive advantage. Featuring the "Gray Rhino" concept.',
-            keynote: 'Michele Wucker'
+            description: 'Strategic risk-taking for competitive advantage. Featuring Michele Wucker\'s "Gray Rhino" concept.',
+            keynote: null
         },
         {
             year: '2022',
             theme: 'The Psychology of Risk',
-            description: 'Deep dive into human factors. How to overcome cognitive biases in risk identification and combine behavioral science with math.',
-            keynote: 'Geoff Trickey'
+            description: 'Overcome cognitive biases in risk identification. Combine behavioral science with quantitative methods. 4,406 participants from 120+ countries.',
+            keynote: null
         },
         {
             year: '2021',
             theme: 'ESG & Climate Decisions',
-            description: 'Better and greener decision making. Applying quantitative risk analysis to climate change, pollution, and complex environmental issues.',
+            description: 'Apply quantitative risk analysis to climate change, pollution, and environmental issues.',
             keynote: null
         },
         {
             year: '2020',
-            theme: 'Solidifying the RM2 Identity',
-            description: 'The pivotal year that defined the decision-centric approach during the global pandemic.',
+            theme: 'Solidifying RM2',
+            description: 'The pivotal year that defined decision-centric risk management during the global pandemic.',
             keynote: null
         },
         {
@@ -54,13 +54,8 @@ export default function PastEvents() {
         <section id="past-events" className="bg-black/20">
             <div className="container">
                 <SectionHeader
-                    title={
-                        <>
-                            Archive of Best Risk Webinars
-                            <span className="block mt-2">(2019–2025)</span>
-                        </>
-                    }
-                    subtitle="Explore seven years of world-class risk management content"
+                    title="Seven Years of Risk Intelligence"
+                    subtitle=""
                 />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" style={{ marginTop: '60px' }}>
