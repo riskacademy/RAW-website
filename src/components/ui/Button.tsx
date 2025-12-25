@@ -1,20 +1,27 @@
 import React from 'react';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+type AnchorButtonProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
     children: React.ReactNode;
     variant?: 'primary' | 'secondary';
-    href?: string;
-    target?: string;
-    rel?: string;
-    onClick?: (() => void) | React.MouseEventHandler<HTMLButtonElement>;
+    href: string;
     className?: string;
-}
+    disabled?: boolean;
+};
+
+type NativeButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    children: React.ReactNode;
+    variant?: 'primary' | 'secondary';
+    href?: undefined;
+    className?: string;
+    disabled?: boolean;
+};
+
+type ButtonProps = AnchorButtonProps | NativeButtonProps;
 
 export default function Button({
     children,
     variant = 'primary',
     href,
-    onClick,
     className = '',
     disabled,
     ...props
@@ -29,10 +36,14 @@ export default function Button({
     const combinedClassName = `${baseStyles} ${variants[variant]} ${className}`;
 
     if (href && !disabled) {
-        // Cast props to any because we are switching from ButtonHTMLAttributes to Anchor attributes
-        // which usually works fine for common attributes like id, className, etc.
         return (
-            <a href={href} className={combinedClassName} style={{ paddingLeft: '48px', paddingRight: '48px' }} {...(props as any)}>
+            <a
+                href={href}
+                className={combinedClassName}
+                style={{ paddingLeft: '48px', paddingRight: '48px' }}
+                aria-disabled={disabled}
+                {...props}
+            >
                 {children}
             </a>
         );
@@ -40,7 +51,6 @@ export default function Button({
 
     return (
         <button
-            onClick={onClick}
             className={combinedClassName}
             style={{ paddingLeft: '48px', paddingRight: '48px' }}
             disabled={disabled}
