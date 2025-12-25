@@ -41,8 +41,7 @@ export default function Button({
                 href={href}
                 className={combinedClassName}
                 style={{ paddingLeft: '48px', paddingRight: '48px' }}
-                aria-disabled={disabled}
-                {...props}
+                {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
             >
                 {children}
             </a>
