@@ -168,8 +168,7 @@ export default function PrivacyPolicy() {
                     </p>
                     <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                         <p className="mb-2"><strong className="text-white">Full name of legal entity:</strong> RISK ACADEMY LTD.</p>
-                        <p className="mb-2"><strong className="text-white">Postal Address:</strong> Phoenix Business Centre, The Penthouse, Old Railway Track, Santa Venera, SVR 9022, Malta</p>
-                        <p className="mb-0"><strong className="text-white">Email address:</strong> <a href="mailto:alex.ausrisk@gmail.com" className="text-purple-400 hover:text-purple-300">alex.ausrisk@gmail.com</a></p>
+                        <p className="mb-0"><strong className="text-white">Postal Address:</strong> Phoenix Business Centre, The Penthouse, Old Railway Track, Santa Venera, SVR 9022, Malta</p>
                     </div>
                     <p className="mb-8">
                         You have the right to make a complaint at any time to your applicable data protection supervisory authority. We would, however, appreciate the chance to address your concerns before you approach the authority, so please contact us in the first instance.

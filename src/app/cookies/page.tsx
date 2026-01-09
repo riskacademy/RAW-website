@@ -98,8 +98,7 @@ export default function CookiePolicy() {
                     </p>
                     <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                         <p className="mb-2"><strong className="text-white">RISK ACADEMY LTD.</strong></p>
-                        <p className="mb-2"><strong className="text-white">Address:</strong> Phoenix Business Centre, The Penthouse, Old Railway Track, Santa Venera, SVR 9022, Malta</p>
-                        <p className="mb-0"><strong className="text-white">Email:</strong> <a href="mailto:alex.ausrisk@gmail.com" className="text-purple-400 hover:text-purple-300">alex.ausrisk@gmail.com</a></p>
+                        <p className="mb-0"><strong className="text-white">Address:</strong> Phoenix Business Centre, The Penthouse, Old Railway Track, Santa Venera, SVR 9022, Malta</p>
                     </div>
                 </div>
             </div>
