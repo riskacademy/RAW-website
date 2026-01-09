@@ -18,7 +18,7 @@ export default function JustificationKit() {
                     <Button
                         href="/Strategic Transition to RM2 Proposal.pdf"
                         variant="primary"
-                        download="Strategic Transition to RM2 Proposal.pdf"
+                        {...({ download: "Strategic Transition to RM2 Proposal.pdf" } as any)}
                     >
                         Download PDF Template
                     </Button>
