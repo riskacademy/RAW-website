@@ -36,7 +36,7 @@ export default function HeroSection() {
     };
 
     return (
-        <section className="min-h-screen flex items-center justify-center px-6 py-20">
+        <section id="hero-section" className="min-h-screen flex items-start md:items-center justify-center px-6 pt-36 pb-20 md:py-20">
             {/* Background gradient effects */}
             <div className="absolute inset-0 -z-10 overflow-hidden">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-float"></div>

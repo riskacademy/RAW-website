@@ -26,7 +26,7 @@ export default function Button({
     disabled,
     ...props
 }: ButtonProps) {
-    const baseStyles = 'inline-block px-12 py-4 rounded-full font-semibold text-base md:text-lg transition-all duration-300 text-center';
+    const baseStyles = 'block px-12 py-4 rounded-full font-semibold text-base md:text-lg transition-all duration-300 text-center';
 
     const variants = {
         primary: `bg-gradient-to-r from-purple-500 to-purple-700 text-white btn-glow hover:scale-105 ${disabled ? 'opacity-50 cursor-not-allowed hover:scale-100' : ''}`,

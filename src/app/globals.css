@@ -63,6 +63,9 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline-block;
+  padding-bottom: 0.15em;
+  line-height: 1.2;
 }
 
 /* Button Glow Effect */
@@ -214,4 +217,14 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-purple-secondary);
+}
+
+/* Hero Section Mobile Override - FORCE FIX */
+@media (max-width: 768px) {
+  #hero-section {
+    padding-top: 150px !important;
+    align-items: flex-start !important;
+    min-height: auto !important;
+    /* Prevent vh forcing content up */
+  }
 }
