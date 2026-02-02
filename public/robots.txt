@@ -1,0 +1,16 @@
+# robots.txt for riskawarenessweek.com
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://riskawarenessweek.com/sitemap.xml
+
+# Crawl-delay (optional, helps prevent server overload)
+# Crawl-delay: 1
+
+# Disallow access to specific directories (if needed)
+# User-agent: *
+# Disallow: /api/
+# Disallow: /admin/

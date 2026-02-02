@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
+import FAQSchema from "@/components/seo/FAQSchema";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -12,6 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://riskawarenessweek.com"),
   title: "Risk Awareness Week (RAW) - #1 Global Virtual Risk Conference",
   description: "Join over 20,000 professionals from 120 countries at the world's largest platform dedicated to risk management, decision making and quantitative risk analysis. Best online risk management events, workshops, and webinars on-demand.",
   keywords: [
@@ -27,6 +29,9 @@ export const metadata: Metadata = {
     "risk modeling"
   ],
   authors: [{ name: "Risk Academy" }],
+  alternates: {
+    canonical: "https://riskawarenessweek.com",
+  },
   openGraph: {
     title: "Risk Awareness Week (RAW) - #1 Global Virtual Risk Conference",
     description: "Join over 20,000 professionals from 120 countries at the world's largest platform dedicated to risk management.",
@@ -34,11 +39,20 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://riskawarenessweek.com",
     siteName: "Risk Awareness Week",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Risk Awareness Week - Global Virtual Risk Conference",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Risk Awareness Week (RAW) - #1 Global Virtual Risk Conference",
     description: "Join over 20,000 professionals from 120 countries at the world's largest platform dedicated to risk management.",
+    images: ["/logo.png"],
   },
 };
 
@@ -54,6 +68,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <JsonLd />
+        <FAQSchema />
       </body>
     </html>
   );

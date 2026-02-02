@@ -16,7 +16,7 @@ export default function JsonLd() {
                 "description": "The #1 Global Virtual Risk Conference. RAW is an annual virtual conference that brings together over 20,000 risk professionals from 120+ countries to learn practical, quantitative risk management skills. Winner of FERMA's 2024 Training & Education Programme of the Year, RAW focuses on helping organizations move beyond traditional compliance checklists toward decision-centric risk management that actually drives business value.",
                 "image": {
                     "@type": "ImageObject",
-                    "url": "https://riskawarenessweek.com/path-to-cover-image.jpg"
+                    "url": "https://riskawarenessweek.com/logo.png"
                 },
                 "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
                 "organizer": {
