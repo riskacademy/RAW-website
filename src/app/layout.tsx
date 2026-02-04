@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     "risk modeling"
   ],
   authors: [{ name: "Risk Academy" }],
+  verification: {
+    google: "google49521994d19bb117",
+  },
   alternates: {
     canonical: "https://riskawarenessweek.com",
   },
