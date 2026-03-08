@@ -4,13 +4,12 @@
 User-agent: *
 Allow: /
 
+# Specifically allow transaction and registration paths that may be visited through subdomains or secondary routes
+Allow: /tickets/
+Allow: /checkout/
+Allow: /register/
+Allow: /select-tickets/
+Allow: /viral-incentive-intent/
+
 # Sitemap location
 Sitemap: https://riskawarenessweek.com/sitemap.xml
-
-# Crawl-delay (optional, helps prevent server overload)
-# Crawl-delay: 1
-
-# Disallow access to specific directories (if needed)
-# User-agent: *
-# Disallow: /api/
-# Disallow: /admin/
