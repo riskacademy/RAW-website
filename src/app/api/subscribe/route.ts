@@ -41,12 +41,12 @@ export async function POST(request: Request) {
             }),
         });
 
-        const data = await response.json();
+        // Brevo returns 204 No Content (empty body) when updating an existing contact,
+        // so parse JSON only if there's a body.
+        const text = await response.text();
+        const data = text ? JSON.parse(text) : {};
 
         if (!response.ok) {
-            // Check for specific Brevo error codes if needed
-            // For example, if it's already in the list, Brevo might return an error, 
-            // but updateEnabled: true usually handles re-subscriptions gracefully or we catch it here.
             console.error('Brevo API Error:', data);
             return NextResponse.json(
                 { error: data.message || 'Failed to subscribe' },
