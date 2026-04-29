@@ -41,8 +41,8 @@ export async function POST(request: Request) {
             }),
         });
 
-        // Brevo returns 204 No Content (empty body) when updating an existing contact,
-        // so parse JSON only if there's a body.
+        // Brevo returns 201 Created for a new contact, 204 No Content (empty body)
+        // when updating an existing one. Parse JSON only if there's a body.
         const text = await response.text();
         const data = text ? JSON.parse(text) : {};
 
@@ -54,7 +54,10 @@ export async function POST(request: Request) {
             );
         }
 
-        return NextResponse.json({ success: true });
+        // 204 means the contact already existed and was updated — surface this
+        // so the UI can show a distinct "already subscribed" message.
+        const alreadySubscribed = response.status === 204;
+        return NextResponse.json({ success: true, alreadySubscribed });
 
     } catch (error) {
         console.error('Subscription error:', error);

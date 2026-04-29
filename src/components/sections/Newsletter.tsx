@@ -6,7 +6,7 @@ import Button from '../ui/Button';
 
 export default function Newsletter() {
     const [email, setEmail] = useState('');
-    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'already' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -27,7 +27,7 @@ export default function Newsletter() {
                 throw new Error(data.error || 'Failed to subscribe');
             }
 
-            setStatus('success');
+            setStatus(data.alreadySubscribed ? 'already' : 'success');
             setEmail('');
         } catch (error) {
             console.error(error);
@@ -57,6 +57,11 @@ export default function Newsletter() {
                             <div className="glass rounded-xl p-8 text-center border md:border-purple-500/30">
                                 <h3 className="text-xl font-bold text-purple-400 mb-2">You're on the list!</h3>
                                 <p className="text-gray-300">We'll notify you when registration opens for RAW 2026.</p>
+                            </div>
+                        ) : status === 'already' ? (
+                            <div className="glass rounded-xl p-8 text-center border md:border-purple-500/30">
+                                <h3 className="text-xl font-bold text-purple-400 mb-2">You're already on the list!</h3>
+                                <p className="text-gray-300">This email is already subscribed — we'll notify you when registration opens for RAW 2026.</p>
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
