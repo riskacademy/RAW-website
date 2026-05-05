@@ -90,8 +90,10 @@ export const speakers: Speaker[] = [
         shortBio: 'Author of "The Flaw of Averages" and inventor of the SIPmath probability standard',
         fullBio:
             "Dr. Sam L. Savage is the Executive Director of ProbabilityManagement.org, a 501(c)(3) nonprofit devoted to standardizing the communication and calculation of uncertainty. The organization has received funding from Chevron, Kaiser Permanente, Highmark Health, Lockheed Martin, PG&E, and others. Harry Markowitz, Nobel Laureate in Economics, was a co-founding board member. Dr. Savage is the author of 'The Flaw of Averages: Why We Underestimate Risk in the Face of Uncertainty' (Wiley, 2009/2012) and 'Chancification: Fixing the Flaw of Averages' (2022). He is the inventor of the Stochastic Information Packet (SIP), an auditable data array for conveying uncertainty. He is an Adjunct in Civil and Environmental Engineering at Stanford University. He began his career as a mathematician at General Motors Research Laboratory and taught at the University of Chicago Graduate School of Business for 15 years.",
+        // CloudFront returns 403 on the full-size original for Sam (other speakers work);
+        // _square_large thumbnail is the highest-resolution variant publicly accessible.
         image:
-            'https://d2q846bclm63a8.cloudfront.net/media/uploads/events/risk-awareness-week-2025-copy/f4owjsE8cKtLSiC3UUEchb.jpg',
+            'https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-week-2025-copy/f4owjsE8cKtLSiC3UUEchb.jpg_square_large.jpg',
         sameAs: [
             'https://www.probabilitymanagement.org/',
             'https://www.linkedin.com/in/sam-s-623674/',
@@ -126,8 +128,10 @@ export const speakers: Speaker[] = [
         shortBio: 'Co-author of "Agility" and "Financial Darwinism"; Forbes Business Visionary',
         fullBio:
             "Leo M. Tilman is an American financier, author, and entrepreneur — a leading authority on strategy, risk intelligence, and finance. He is Chairman and CEO of Agilion Systems, an advanced technology and strategic advisory firm (formerly Tilman & Company). Previously held senior positions at BlackRock and Bear Stearns and taught finance at Columbia University. Author of four books — 'Agility' (2019, with former NORAD Commander General Chuck Jacoby), 'Financial Darwinism' (2008), 'Asset/Liability Management' (Ed., 2003), and 'Risk Management' (2000, with BlackRock co-founder Ben Golub). In 2010, co-authored a Harvard Business Review proposal with Nobel economist Edmund Phelps to create the First National Bank of Innovation. In 2012, redefined risk intelligence as a new core competence of companies and investors. One of the architects of a public/private partnership (White House Rural Council, USDA, Farm Credit System) that brought billions in private capital to innovative companies. Tilman holds B.A. and M.A. in mathematics from Columbia, with executive education at Harvard Kennedy School and Yale Jackson Institute. Profiled as Business Visionary by Forbes.",
+        // CloudFront returns 403 on the full-size original for Leo (other speakers work);
+        // _square_large thumbnail is the highest-resolution variant publicly accessible.
         image:
-            'https://d2q846bclm63a8.cloudfront.net/media/uploads/events/risk-awareness-week-2025-copy/kuU77FB7UjvDU3jRrmfMQQ.jpg',
+            'https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-week-2025-copy/kuU77FB7UjvDU3jRrmfMQQ.jpg_square_large.jpg',
         sameAs: [
             'https://agilion.com/',
             'https://www.linkedin.com/in/leo-m-tilman-b76170a0/',
