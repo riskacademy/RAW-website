@@ -1,6 +1,64 @@
-# robots.txt for riskawarenessweek.com
-# Allow all search engines to crawl the site
+# Risk Awareness Week — robots.txt
+# Explicit allow for AI crawlers and search assistants (LLM era)
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: AppleBot
+Allow: /
+
+User-agent: AppleBot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: meta-externalfetcher
+Allow: /
+
+# Allow all other crawlers
 User-agent: *
 Allow: /
 
@@ -13,3 +71,8 @@ Allow: /viral-incentive-intent/
 
 # Sitemap location
 Sitemap: https://riskawarenessweek.com/sitemap.xml
+
+# AI discovery hints
+# llms.txt: https://riskawarenessweek.com/llms.txt
+# MCP endpoint: https://mcp.riskawarenessweek.com/
+# MCP discovery: https://mcp.riskawarenessweek.com/.well-known/mcp.json

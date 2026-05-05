@@ -66,6 +66,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* AI / agent discovery hints */}
+        <link
+          rel="alternate"
+          type="application/json"
+          href="https://mcp.riskawarenessweek.com/.well-known/mcp.json"
+          title="MCP server"
+        />
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="https://riskawarenessweek.com/llms.txt"
+          title="llms.txt"
+        />
+      </head>
       <body className={`${inter.variable} antialiased`}>
         <Header />
         <main>{children}</main>

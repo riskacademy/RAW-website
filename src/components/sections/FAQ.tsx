@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import SectionHeader from '../ui/SectionHeader';
+import { RAW2026_FAQ } from '@/data/faq';
 
 interface FAQItem {
     question: string;
@@ -12,7 +13,16 @@ interface FAQItem {
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-    const faqs: FAQItem[] = [
+    // RAW2026-specific Q&A first (event details — highest AEO priority).
+    // Texts come from /src/data/faq.ts which is also consumed by FAQSchema.tsx,
+    // ensuring HTML and JSON-LD stay in sync.
+    const raw2026Faqs: FAQItem[] = RAW2026_FAQ.map((item) => ({
+        question: item.question,
+        tag: item.tag,
+        answer: <p>{item.answer}</p>,
+    }));
+
+    const rm1Faqs: FAQItem[] = [
         {
             question: 'How often should we conduct risk assessments?',
             tag: 'RM1 Question',
@@ -134,6 +144,8 @@ export default function FAQ() {
             )
         }
     ];
+
+    const faqs: FAQItem[] = [...raw2026Faqs, ...rm1Faqs];
 
     return (
         <section id="faq">

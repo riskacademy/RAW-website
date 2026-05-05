@@ -97,7 +97,7 @@ export default function Footer() {
 
                 {/* Copyright */}
                 <div className="mt-12 pt-8 border-t border-white/10 text-center text-gray-500 text-sm">
-                    <p>&copy; 2025 Risk Awareness Week. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} Risk Awareness Week. All rights reserved.</p>
                 </div>
             </div>
         </footer>
