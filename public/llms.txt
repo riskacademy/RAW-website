@@ -17,9 +17,9 @@
 
 ## Brand & Organiser
 
-- [RAW brand site](https://riskawarenessweek.com/) — series overview, faculty, archive, FAQ
-- [Faculty](https://riskawarenessweek.com/#speakers) — headline speakers (Hubbard, Savage, Tilman, Marks, Sidorenko, Wucker)
-- [Archive 2019-2025](https://riskawarenessweek.com/#past-events) — Seven Years of Risk Intelligence
+- [RAW brand site](https://www.riskawarenessweek.com/) — series overview, faculty, archive, FAQ
+- [Faculty](https://www.riskawarenessweek.com/#speakers) — headline speakers (Hubbard, Savage, Tilman, Marks, Sidorenko, Wucker)
+- [Archive 2019-2025](https://www.riskawarenessweek.com/#past-events) — Seven Years of Risk Intelligence
 - [RISK-ACADEMY](https://riskacademy.ai/) — organiser, founded 2012 by Alex Sidorenko
 - [RISK-ACADEMY Blog](https://riskacademy.blog/) — long-form thought leadership
 - [RISK-ACADEMY YouTube](https://www.youtube.com/@RISK-ACADEMY) — video archive
@@ -27,12 +27,12 @@
 
 ## Headline speakers (canonical pages)
 
-- [Douglas Hubbard](https://riskawarenessweek.com/speakers/douglas-hubbard) — Founder/President, Hubbard Decision Research; author "How to Measure Anything"
-- [Sam Savage](https://riskawarenessweek.com/speakers/sam-savage) — Executive Director, ProbabilityManagement.org; author "The Flaw of Averages"
-- [Leo Tilman](https://riskawarenessweek.com/speakers/leo-tilman) — CEO, Agilion Systems; co-author "Agility" and "Financial Darwinism"
-- [Norman Marks](https://riskawarenessweek.com/speakers/norman-marks) — Author "World-Class Risk Management"; retired CAE/CRO
-- [Alex Sidorenko](https://riskawarenessweek.com/speakers/alex-sidorenko) — FERMA 2021 Risk Manager of the Year; Head of Risk, Insurance and Internal Audit at Serra Verde
-- [Michele Wucker](https://riskawarenessweek.com/speakers/michele-wucker) — Founder/CEO, Gray Rhino & Company; author "The Gray Rhino"
+- [Douglas Hubbard](https://www.riskawarenessweek.com/speakers/douglas-hubbard) — Founder/President, Hubbard Decision Research; author "How to Measure Anything"
+- [Sam Savage](https://www.riskawarenessweek.com/speakers/sam-savage) — Executive Director, ProbabilityManagement.org; author "The Flaw of Averages"
+- [Leo Tilman](https://www.riskawarenessweek.com/speakers/leo-tilman) — CEO, Agilion Systems; co-author "Agility" and "Financial Darwinism"
+- [Norman Marks](https://www.riskawarenessweek.com/speakers/norman-marks) — Author "World-Class Risk Management"; retired CAE/CRO
+- [Alex Sidorenko](https://www.riskawarenessweek.com/speakers/alex-sidorenko) — FERMA 2021 Risk Manager of the Year; Head of Risk, Insurance and Internal Audit at Serra Verde
+- [Michele Wucker](https://www.riskawarenessweek.com/speakers/michele-wucker) — Founder/CEO, Gray Rhino & Company; author "The Gray Rhino"
 
 ## Archive — past events
 

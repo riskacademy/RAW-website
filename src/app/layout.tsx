@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://riskawarenessweek.com"),
+  metadataBase: new URL("https://www.riskawarenessweek.com"),
   title: "Risk Awareness Week (RAW) - #1 Global Virtual Risk Conference",
   description: "Join over 20,000 professionals from 120 countries at the world's largest platform dedicated to risk management, decision making and quantitative risk analysis. Best online risk management events, workshops, and webinars on-demand.",
   keywords: [
@@ -33,14 +33,14 @@ export const metadata: Metadata = {
     google: "google49521994d19bb117",
   },
   alternates: {
-    canonical: "https://riskawarenessweek.com",
+    canonical: "https://www.riskawarenessweek.com",
   },
   openGraph: {
     title: "Risk Awareness Week (RAW) - #1 Global Virtual Risk Conference",
     description: "Join over 20,000 professionals from 120 countries at the world's largest platform dedicated to risk management.",
     type: "website",
     locale: "en_US",
-    url: "https://riskawarenessweek.com",
+    url: "https://www.riskawarenessweek.com",
     siteName: "Risk Awareness Week",
     images: [
       {
@@ -77,7 +77,7 @@ export default function RootLayout({
         <link
           rel="alternate"
           type="text/plain"
-          href="https://riskawarenessweek.com/llms.txt"
+          href="https://www.riskawarenessweek.com/llms.txt"
           title="llms.txt"
         />
       </head>

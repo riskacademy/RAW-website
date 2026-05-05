@@ -70,9 +70,9 @@ Allow: /select-tickets/
 Allow: /viral-incentive-intent/
 
 # Sitemap location
-Sitemap: https://riskawarenessweek.com/sitemap.xml
+Sitemap: https://www.riskawarenessweek.com/sitemap.xml
 
 # AI discovery hints
-# llms.txt: https://riskawarenessweek.com/llms.txt
+# llms.txt: https://www.riskawarenessweek.com/llms.txt
 # MCP endpoint: https://mcp.riskawarenessweek.com/
 # MCP discovery: https://mcp.riskawarenessweek.com/.well-known/mcp.json

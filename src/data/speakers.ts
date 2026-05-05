@@ -407,7 +407,7 @@ export const speakers: Speaker[] = [
 
 export const HEADLINE_SPEAKERS = speakers.filter((s) => s.isHeadlineSpeaker);
 
-export const SITE_ORIGIN = 'https://riskawarenessweek.com';
+export const SITE_ORIGIN = 'https://www.riskawarenessweek.com';
 
 export function speakerPageUrl(slug: string): string {
     return `${SITE_ORIGIN}/speakers/${slug}`;
