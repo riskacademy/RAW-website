@@ -52,6 +52,8 @@
 
 ## Open data
 
+- [Wikidata: Risk Awareness Week](https://www.wikidata.org/wiki/Q139673886) — knowledge graph entry (EventSeries)
+- [Wikidata: RISK-ACADEMY](https://www.wikidata.org/wiki/Q139673887) — knowledge graph entry (Organization)
 - [GitHub: raw-llm-pack](https://github.com/terekhindc/raw-llm-pack) — JSON-LD pack (Organization, EventSeries, Event, Speakers, Article)
 
 ## Contact

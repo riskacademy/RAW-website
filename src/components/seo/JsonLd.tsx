@@ -334,11 +334,14 @@ export default function JsonLd() {
             'RM2',
             'AI in risk management',
         ],
-        // Wikidata Q136950469 was a 404 — removed (per TЗ Task 11). YouTube channel and
-        // GitHub raw-llm-pack are valid sameAs.
+        // sameAs links: YouTube channel + raw-llm-pack JSON-LD repo + the live
+        // Wikidata entity for Risk Awareness Week (Q139673886). The earlier
+        // Q136950469 reference was 404 and was removed; Q139673886 is the
+        // replacement entity created for the EventSeries.
         'sameAs': [
             'https://www.youtube.com/channel/UCog9jkDZdiRps2w27MZ5Azg',
             'https://github.com/terekhindc/raw-llm-pack',
+            'https://www.wikidata.org/wiki/Q139673886',
         ],
         'about': [
             { '@type': 'Thing', 'name': 'Quantitative risk management' },
