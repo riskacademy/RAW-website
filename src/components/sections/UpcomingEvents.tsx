@@ -44,12 +44,37 @@ export default function UpcomingEvents() {
                 <div className="mx-auto" style={{ marginTop: '60px' }}>
                     <div className="glass rounded-2xl text-center" style={{ padding: '64px' }}>
                         <p className="text-xl md:text-2xl text-gray-300 leading-relaxed" style={{ marginBottom: '48px' }}>
-                            Scheduled for <span className="text-purple-400 font-semibold">12-17 October 2026</span>, focusing on
+                            Scheduled for <span className="text-purple-400 font-semibold">12-16 October 2026</span>, focusing on
                             practical application of risk-based decision making.
                         </p>
 
                         <p className="text-base md:text-lg text-gray-400" style={{ marginBottom: '48px' }}>
                             No theory—only case studies from companies applying quantitative risk analysis in their processes and decisions.
+                        </p>
+
+                        {/* Primary CTA: send users to the actual 2026 event site (registration is open). */}
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto" style={{ marginBottom: '40px' }}>
+                            <a
+                                href="https://2026.riskawarenessweek.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-full transition-colors text-base md:text-lg w-full sm:w-auto"
+                            >
+                                View 2026 programme &amp; tickets
+                                <span aria-hidden="true">→</span>
+                            </a>
+                            <a
+                                href="https://2026.riskawarenessweek.com/speakers/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-purple-500/40 hover:border-purple-400 text-purple-300 hover:text-purple-200 font-medium rounded-full transition-colors text-base md:text-lg w-full sm:w-auto"
+                            >
+                                See all 36 speakers
+                            </a>
+                        </div>
+
+                        <p className="text-sm text-gray-500" style={{ marginBottom: '40px' }}>
+                            Phase 1 is FREE · Phase 2 from $550 · Corporate Pass $2,000
                         </p>
 
                         <div className="max-w-md mx-auto" style={{ marginBottom: '64px' }}>

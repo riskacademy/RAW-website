@@ -61,10 +61,21 @@ export default function HeroSection() {
                     {/* Sub-headline / Schedule Info */}
                     <div className="animate-fade-in-up mb-12">
                         <p className="text-lg md:text-xl text-gray-300 mx-auto leading-relaxed mb-4">
-                            Scheduled for 12-17 October 2026, focusing on practical application of risk-based decision making.
+                            Scheduled for 12-16 October 2026, focusing on practical application of risk-based decision making.
                         </p>
-                        <p className="text-lg md:text-xl text-gray-300 mx-auto leading-relaxed">
+                        <p className="text-lg md:text-xl text-gray-300 mx-auto leading-relaxed mb-4">
                             No theory—only case studies from companies applying quantitative risk analysis in their processes and decisions.
+                        </p>
+                        <p className="text-base md:text-lg">
+                            <a
+                                href="https://2026.riskawarenessweek.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors underline-offset-4 hover:underline"
+                            >
+                                View RAW 2026 programme &amp; tickets
+                                <span aria-hidden="true">→</span>
+                            </a>
                         </p>
                     </div>
 

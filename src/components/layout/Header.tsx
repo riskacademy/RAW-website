@@ -49,6 +49,17 @@ export default function Header() {
                                 </a>
                             </li>
                         ))}
+                        <li className="ml-4">
+                            <a
+                                href="https://2026.riskawarenessweek.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 px-5 py-2 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-full transition-colors text-sm"
+                            >
+                                Get tickets
+                                <span aria-hidden="true">→</span>
+                            </a>
+                        </li>
                     </ul>
 
                     {/* Mobile Menu Button */}
@@ -75,6 +86,18 @@ export default function Header() {
                                     </a>
                                 </li>
                             ))}
+                            <li className="pt-2">
+                                <a
+                                    href="https://2026.riskawarenessweek.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="inline-flex items-center gap-1 px-5 py-2 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-full transition-colors text-sm"
+                                >
+                                    Get RAW 2026 tickets
+                                    <span aria-hidden="true">→</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 )}

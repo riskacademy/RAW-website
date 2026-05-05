@@ -45,7 +45,7 @@ export default function Newsletter() {
                     </h2>
 
                     <p className="text-lg text-gray-300 mb-4">
-                        Scheduled for 12-17 October 2026, focusing on practical application of risk-based decision making.
+                        Scheduled for 12-16 October 2026, focusing on practical application of risk-based decision making.
                     </p>
 
                     <p className="text-lg text-gray-300 mb-12">
