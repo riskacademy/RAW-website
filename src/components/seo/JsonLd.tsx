@@ -38,9 +38,9 @@ function buildPersonNodes() {
             };
         }
         if (s.awards && s.awards.length) node['award'] = s.awards;
-        if (s.slug === 'alex-sidorenko') {
-            node['founder'] = { '@id': ORGANIZATION_ID };
-        }
+        // NB: schema.org defines `founder` only on Organization (Organization.founder → Person),
+        // there is no inverse on Person. The Alex → RISK-ACADEMY founder fact lives in his
+        // bio text and is asserted from the Organization side at riskacademy.blog#organization.
         return node;
     });
 }
@@ -84,7 +84,8 @@ const SUB_EVENTS = [
         },
         'organizer': { '@id': ORGANIZATION_ID },
         'superEvent': { '@id': EVENT_SERIES_ID },
-        'award': 'FERMA Training & Education Programme of the Year 2024',
+        // NB: schema.org Event has no `award` property. The FERMA win is asserted in
+        // description text instead (where Google's NLP can still parse it).
     },
     {
         '@type': 'EducationEvent',
@@ -345,7 +346,8 @@ export default function JsonLd() {
         ],
         'subEvent': SUB_EVENTS,
         'performer': speakers.map((s) => ({ '@id': speakerPersonId(s.slug) })),
-        'award': 'FERMA Training & Education Programme of the Year 2024',
+        // FERMA 2024 win lives in EventSeries.description (parseable) — schema.org
+        // has no `award` property on Event/EventSeries.
     };
 
     if (reviewNodes.length > 0) {
