@@ -79,17 +79,17 @@ export default function HeroSection() {
                         </p>
                     </div>
 
-                    {/* Waiting List Form */}
+                    {/* Email subscription form — RAW updates and announcements */}
                     <div className="max-w-md mx-auto mb-16 animate-fade-in-up">
                         {status === 'success' ? (
                             <div className="glass rounded-xl p-8 text-center border md:border-purple-500/30">
-                                <h3 className="text-xl font-bold text-purple-400 mb-2">You're on the list!</h3>
-                                <p className="text-gray-300">We'll notify you when registration opens for RAW 2026.</p>
+                                <h3 className="text-xl font-bold text-purple-400 mb-2">You're subscribed!</h3>
+                                <p className="text-gray-300">You'll get RAW updates and announcements.</p>
                             </div>
                         ) : status === 'already' ? (
                             <div className="glass rounded-xl p-8 text-center border md:border-purple-500/30">
-                                <h3 className="text-xl font-bold text-purple-400 mb-2">You're already on the list!</h3>
-                                <p className="text-gray-300">This email is already subscribed — we'll notify you when registration opens for RAW 2026.</p>
+                                <h3 className="text-xl font-bold text-purple-400 mb-2">You're already subscribed!</h3>
+                                <p className="text-gray-300">This email is already on the list — you'll get RAW updates and announcements.</p>
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -98,7 +98,7 @@ export default function HeroSection() {
                                         type="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        placeholder="Enter your email for early access"
+                                        placeholder="Enter your email"
                                         required
                                         disabled={status === 'loading'}
                                         className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors disabled:opacity-50"
@@ -110,7 +110,7 @@ export default function HeroSection() {
                                     onClick={() => { }}
                                     disabled={status === 'loading'}
                                 >
-                                    {status === 'loading' ? 'Joining...' : 'Join the Waiting List'}
+                                    {status === 'loading' ? 'Subscribing...' : 'Get RAW updates and announcements'}
                                 </Button>
                                 {status === 'error' && (
                                     <p className="text-red-400 text-sm mt-2">{errorMessage}</p>

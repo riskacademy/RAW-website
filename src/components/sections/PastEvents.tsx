@@ -59,6 +59,43 @@ export default function PastEvents() {
                 />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" style={{ marginTop: '60px' }}>
+                    {/* RAW 2026 — current edition. Visually elevated above the archive. */}
+                    <Card
+                        key="2026"
+                        className="flex flex-col h-full border-purple-500/40 bg-gradient-to-br from-purple-500/15 to-transparent"
+                    >
+                        <div className="flex items-start justify-between" style={{ marginBottom: '40px' }}>
+                            <h3 className="text-3xl font-bold gradient-text">
+                                RAW 2026
+                            </h3>
+                            <span className="px-3 py-1 text-xs font-semibold bg-purple-500/30 text-purple-100 rounded-full uppercase tracking-wider">
+                                Coming Soon
+                            </span>
+                        </div>
+
+                        <h4 className="text-xl font-semibold text-white leading-tight" style={{ marginBottom: '32px' }}>
+                            12-16 October 2026 · Fully virtual
+                        </h4>
+
+                        <p className="text-gray-300 text-sm leading-relaxed" style={{ marginBottom: '24px' }}>
+                            36 speakers across 7 thematic tracks. Phase 1 (Hard Reset, free) exposes why traditional risk management fails. Phase 2 (Implementation Sprints, paid) — 3-hour interactive workshops on AI agents, Monte Carlo, contract risk, emerging-risk radar. CPD-certified.
+                        </p>
+
+                        <p className="text-purple-300 text-sm" style={{ marginBottom: '40px' }}>
+                            <span className="font-semibold">Tickets:</span> Phase 1 free · Phase 2 from $550 · Corporate $2,000
+                        </p>
+
+                        <Button
+                            href="https://2026.riskawarenessweek.com/"
+                            variant="primary"
+                            className="w-full text-sm py-3 mt-auto"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View RAW 2026 →
+                        </Button>
+                    </Card>
+
                     {events.map((event) => (
                         <Card key={event.year} className="flex flex-col h-full">
                             <div className="flex items-start justify-between" style={{ marginBottom: '40px' }}>

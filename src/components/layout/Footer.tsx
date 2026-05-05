@@ -24,6 +24,16 @@ export default function Footer() {
                         <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
                         <ul className="space-y-2">
                             <li>
+                                <a
+                                    href="https://2026.riskawarenessweek.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-purple-300 hover:text-purple-200 transition-colors font-medium"
+                                >
+                                    RAW 2026 Event Site →
+                                </a>
+                            </li>
+                            <li>
                                 <Link href="#speakers" className="text-gray-400 hover:text-purple-400 transition-colors">
                                     Speakers Directory
                                 </Link>
