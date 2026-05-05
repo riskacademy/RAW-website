@@ -64,7 +64,7 @@ const SUB_EVENTS = [
             'url': 'https://2025.riskawarenessweek.com/',
         },
         'organizer': { '@id': ORGANIZATION_ID },
-        'isPartOf': { '@id': EVENT_SERIES_ID },
+        'superEvent': { '@id': EVENT_SERIES_ID },
     },
     {
         '@type': 'EducationEvent',
@@ -83,7 +83,7 @@ const SUB_EVENTS = [
             'url': 'https://2024.riskawarenessweek.com/',
         },
         'organizer': { '@id': ORGANIZATION_ID },
-        'isPartOf': { '@id': EVENT_SERIES_ID },
+        'superEvent': { '@id': EVENT_SERIES_ID },
         'award': 'FERMA Training & Education Programme of the Year 2024',
     },
     {
@@ -103,7 +103,7 @@ const SUB_EVENTS = [
             'url': 'https://2023.riskawarenessweek.com/',
         },
         'organizer': { '@id': ORGANIZATION_ID },
-        'isPartOf': { '@id': EVENT_SERIES_ID },
+        'superEvent': { '@id': EVENT_SERIES_ID },
     },
     {
         '@type': 'EducationEvent',
@@ -122,7 +122,7 @@ const SUB_EVENTS = [
             'url': 'https://2022.riskawarenessweek.com/',
         },
         'organizer': { '@id': ORGANIZATION_ID },
-        'isPartOf': { '@id': EVENT_SERIES_ID },
+        'superEvent': { '@id': EVENT_SERIES_ID },
     },
     {
         '@type': 'EducationEvent',
@@ -141,7 +141,7 @@ const SUB_EVENTS = [
             'url': 'https://2021.riskawarenessweek.com/',
         },
         'organizer': { '@id': ORGANIZATION_ID },
-        'isPartOf': { '@id': EVENT_SERIES_ID },
+        'superEvent': { '@id': EVENT_SERIES_ID },
     },
     {
         '@type': 'EducationEvent',
@@ -160,7 +160,7 @@ const SUB_EVENTS = [
             'url': 'https://2020.riskawarenessweek.com/',
         },
         'organizer': { '@id': ORGANIZATION_ID },
-        'isPartOf': { '@id': EVENT_SERIES_ID },
+        'superEvent': { '@id': EVENT_SERIES_ID },
     },
     {
         '@type': 'EducationEvent',
@@ -179,7 +179,7 @@ const SUB_EVENTS = [
             'url': 'https://2019.riskawarenessweek.com/',
         },
         'organizer': { '@id': ORGANIZATION_ID },
-        'isPartOf': { '@id': EVENT_SERIES_ID },
+        'superEvent': { '@id': EVENT_SERIES_ID },
     },
 ];
 
@@ -197,7 +197,7 @@ const EVENT_2026 = {
         '@type': 'VirtualLocation',
         'url': 'https://2026.riskawarenessweek.com/',
     },
-    'isPartOf': { '@id': EVENT_SERIES_ID },
+    'superEvent': { '@id': EVENT_SERIES_ID },
     'organizer': { '@id': ORGANIZATION_ID },
     'description':
         'RAW2026 is scheduled for 12-16 October 2026, fully virtual, focusing on practical application of risk-based decision making and AI in risk. Phase 1 (12-13 October) — free fast-paced 30-minute sessions. Phase 2 (14-16 October) — paid 3-hour interactive workshops with CPD credits. No theory, only case studies from companies applying quantitative risk analysis.',
