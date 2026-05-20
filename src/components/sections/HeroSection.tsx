@@ -60,8 +60,11 @@ export default function HeroSection() {
 
                     {/* Sub-headline / Schedule Info */}
                     <div className="animate-fade-in-up mb-12">
-                        <p className="text-lg md:text-xl text-gray-300 mx-auto leading-relaxed mb-4">
+                        <p className="text-lg md:text-xl text-gray-300 mx-auto leading-relaxed mb-3">
                             Scheduled for 12-16 October 2026, focusing on practical application of risk-based decision making.
+                        </p>
+                        <p className="text-sm md:text-base text-purple-300/90 mx-auto mb-4 font-medium tracking-wide uppercase">
+                            Fully virtual · FERMA 2024 award winner
                         </p>
                         <p className="text-lg md:text-xl text-gray-300 mx-auto leading-relaxed mb-4">
                             No theory—only case studies from companies applying quantitative risk analysis in their processes and decisions.
