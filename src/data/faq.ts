@@ -56,4 +56,10 @@ export const RAW2026_FAQ: RAW2026Faq[] = [
         answer:
             'RAW is fully virtual, decision-centric and quantification-first, and significantly more affordable than RIMS RiskWorld (in-person) or FAIRCON (FAIR-methodology focused). RAW teaches RM2 — quantifying uncertainty before decisions, not documenting it afterward. Featuring practitioners from Chevron, Microsoft, Lockheed Martin, Allianz and others. FERMA 2024 award winner.',
     },
+    {
+        question: 'How do I justify the ticket to CFO?',
+        tag: 'RAW 2026',
+        answer:
+            'RAW provides a CFO-approved justification letter, downloadable from the 2026 home page, which you can adapt and submit to secure training budget. The economics are straightforward: a Phase 2 ticket ($550) is roughly 1/10 the cost of an in-person risk conference once flights, hotel and time-off are counted, and includes 15+ workshops with 12-month replay access. Concrete CFO-facing outcomes from past attendees: tighter contingency reserves driven by Monte Carlo modelling, lower insurance premiums backed by quantified risk profiles presented to underwriters, and faster board approvals for capital projects. A Corporate Pass ($2,000, up to 50 participants) reduces per-head cost below $40.',
+    },
 ];
