@@ -2,13 +2,11 @@ import React from 'react';
 import { speakers, speakerPersonId, SITE_ORIGIN } from '@/data/speakers';
 import { ATTENDEE_REVIEWS } from '@/data/reviews';
 import { FEATURED_VIDEOS, videoContentUrl, videoEmbedUrl, videoThumbnailUrl } from '@/data/videos';
-import { RAW2026_FAQ, RM_METHODOLOGY_FAQ } from '@/data/faq';
 
 const EVENT_SERIES_ID = `${SITE_ORIGIN}#eventseries`;
 const ORGANIZATION_ID = 'https://riskacademy.blog/#organization';
 const WEBSITE_ID = `${SITE_ORIGIN}#website`;
 const EVENT_2026_ID = 'https://2026.riskawarenessweek.com#event';
-const FAQ_PAGE_ID = `${SITE_ORIGIN}/#faq`;
 
 // Person nodes for the @graph. Six headline speakers get their own canonical URL
 // (/speakers/<slug>) — that page also emits the same Person with the same @id, so the
@@ -387,46 +385,9 @@ export default function JsonLd() {
         'publisher': { '@id': ORGANIZATION_ID },
     };
 
-    // FAQPage node — 17 mainEntity items (9 RAW2026-specific + 8 RM methodology).
-    // Sits inside @graph so the whole page emits ONE knowledge graph rather than
-    // splitting FAQ off into a separate top-level ld+json blob. Linked to existing
-    // graph nodes via @id: isPartOf → #website, about → #event, mainEntityOfPage
-    // → 2026.* WebPage. The 9 RAW2026 Q&A texts mirror /src/components/sections/FAQ.tsx
-    // (Google FAQ rich-result rule: JSON-LD must match what's visible).
-    const faqPage = {
-        '@type': 'FAQPage',
-        '@id': FAQ_PAGE_ID,
-        'url': `${SITE_ORIGIN}/`,
-        'inLanguage': 'en',
-        'isPartOf': { '@id': WEBSITE_ID },
-        'about': { '@id': EVENT_2026_ID },
-        'mainEntityOfPage': {
-            '@type': 'WebPage',
-            '@id': 'https://2026.riskawarenessweek.com/',
-            'url': 'https://2026.riskawarenessweek.com/',
-            'name': 'Risk Awareness Week 2026',
-            'isPartOf': { '@id': WEBSITE_ID },
-            'about': { '@id': EVENT_2026_ID },
-            'primaryImageOfPage':
-                'https://d2q846bclm63a8.cloudfront.net/media/uploads/events/risk-awareness-week-2026/SmM6LcU2X6JJ8j65Vkf28C.png.png',
-        },
-        'mainEntity': [
-            ...RAW2026_FAQ.map((item) => ({
-                '@type': 'Question',
-                'name': item.question,
-                'acceptedAnswer': { '@type': 'Answer', 'text': item.answer },
-            })),
-            ...RM_METHODOLOGY_FAQ.map((item) => ({
-                '@type': 'Question',
-                'name': item.question,
-                'acceptedAnswer': { '@type': 'Answer', 'text': item.answer },
-            })),
-        ],
-    };
-
     const schema = {
         '@context': 'https://schema.org',
-        '@graph': [eventSeries, ...personNodes, website, EVENT_2026, faqPage, ...videoNodes],
+        '@graph': [eventSeries, ...personNodes, website, EVENT_2026, ...videoNodes],
     };
 
     return (
