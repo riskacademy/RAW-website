@@ -385,15 +385,33 @@ export default function JsonLd() {
         'publisher': { '@id': ORGANIZATION_ID },
     };
 
-    const schema = {
-        '@context': 'https://schema.org',
-        '@graph': [eventSeries, ...personNodes, website, EVENT_2026, ...videoNodes],
-    };
+    // Each entity is emitted as its own top-level <script type="application/ld+json">
+    // blob so validator.schema.org UI shows them as separate entity cards. Cross-
+    // references between entities use @id (URI-based identity per JSON-LD spec) and
+    // continue to work across blobs — schema.org doesn't care whether two related
+    // entities live in the same blob or different ones.
+    const entities: Array<Record<string, unknown>> = [
+        eventSeries,
+        ...personNodes,
+        website,
+        EVENT_2026,
+        ...videoNodes,
+    ];
 
     return (
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
+        <>
+            {entities.map((entity, i) => (
+                <script
+                    key={`ld-${i}-${entity['@type'] ?? 'node'}`}
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            ...entity,
+                        }),
+                    }}
+                />
+            ))}
+        </>
     );
 }
