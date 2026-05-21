@@ -5,6 +5,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import FAQSchema from "@/components/seo/FAQSchema";
+import GA4 from "@/components/analytics/GA4";
+import AISourceTracker from "@/components/analytics/AISourceTracker";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -87,6 +89,8 @@ export default function RootLayout({
         <Footer />
         <JsonLd />
         <FAQSchema />
+        <GA4 />
+        <AISourceTracker />
       </body>
     </html>
   );
