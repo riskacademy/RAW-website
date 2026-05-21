@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
-import FAQSchema from "@/components/seo/FAQSchema";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -86,7 +85,6 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <JsonLd />
-        <FAQSchema />
       </body>
     </html>
   );
