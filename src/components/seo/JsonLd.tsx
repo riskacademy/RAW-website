@@ -212,6 +212,16 @@ const EVENT_2026 = {
             'endDate': '2026-10-13T18:00:00+00:00',
             'description':
                 'Free fast-paced 30-minute sessions exposing why traditional risk management fails.',
+            'eventStatus': 'https://schema.org/EventScheduled',
+            'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
+            'location': {
+                '@type': 'VirtualLocation',
+                'url': 'https://2026.riskawarenessweek.com/',
+            },
+            'organizer': { '@id': ORGANIZATION_ID },
+            'superEvent': { '@id': EVENT_2026_ID },
+            'image':
+                'https://d2q846bclm63a8.cloudfront.net/media/uploads/events/risk-awareness-week-2026/SmM6LcU2X6JJ8j65Vkf28C.png.png',
         },
         {
             '@type': 'EducationEvent',
@@ -220,6 +230,16 @@ const EVENT_2026 = {
             'endDate': '2026-10-16T18:00:00+00:00',
             'description':
                 'Paid 3-hour interactive workshops on AI agents, Monte Carlo simulation, contract risk assessment, and quantitative risk methods.',
+            'eventStatus': 'https://schema.org/EventScheduled',
+            'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
+            'location': {
+                '@type': 'VirtualLocation',
+                'url': 'https://2026.riskawarenessweek.com/',
+            },
+            'organizer': { '@id': ORGANIZATION_ID },
+            'superEvent': { '@id': EVENT_2026_ID },
+            'image':
+                'https://d2q846bclm63a8.cloudfront.net/media/uploads/events/risk-awareness-week-2026/SmM6LcU2X6JJ8j65Vkf28C.png.png',
         },
     ],
     'offers': [
