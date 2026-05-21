@@ -1,12 +1,19 @@
 import React from 'react';
 import { RAW2026_FAQ } from '@/data/faq';
+import { SITE_ORIGIN } from '@/data/speakers';
 
-// FAQPage with 16 mainEntity items: 8 RAW2026-specific (synced with FAQ.tsx via
+// FAQPage with 17 mainEntity items: 9 RAW2026-specific (synced with FAQ.tsx via
 // /src/data/faq.ts) + 8 RM1-vs-RM2 methodology Q&A.
 //
-// Texts of the 8 RAW2026 Q&A are identical between this JSON-LD and the visible
+// Texts of the 9 RAW2026 Q&A are identical between this JSON-LD and the visible
 // FAQ.tsx — required by Google's FAQ rich-result rule (mainEntity must be visible
 // to the user).
+//
+// Linked into the @graph in JsonLd.tsx via @id references — about → #event,
+// isPartOf → #website. Don't redefine those nodes here.
+
+const WEBSITE_ID = `${SITE_ORIGIN}#website`;
+const EVENT_2026_ID = 'https://2026.riskawarenessweek.com#event';
 
 const RM_METHODOLOGY_QA = [
     {
@@ -55,6 +62,21 @@ export default function FAQSchema() {
     const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
+        '@id': `${SITE_ORIGIN}/#faq`,
+        'url': `${SITE_ORIGIN}/`,
+        'inLanguage': 'en',
+        'isPartOf': { '@id': WEBSITE_ID },
+        'about': { '@id': EVENT_2026_ID },
+        'mainEntityOfPage': {
+            '@type': 'WebPage',
+            '@id': 'https://2026.riskawarenessweek.com/',
+            'url': 'https://2026.riskawarenessweek.com/',
+            'name': 'Risk Awareness Week 2026',
+            'isPartOf': { '@id': WEBSITE_ID },
+            'about': { '@id': EVENT_2026_ID },
+            'primaryImageOfPage':
+                'https://d2q846bclm63a8.cloudfront.net/media/uploads/events/risk-awareness-week-2026/SmM6LcU2X6JJ8j65Vkf28C.png.png',
+        },
         'mainEntity': [
             ...RAW2026_FAQ.map((item) => ({
                 '@type': 'Question',
