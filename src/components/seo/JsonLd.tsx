@@ -7,6 +7,10 @@ const EVENT_SERIES_ID = `${SITE_ORIGIN}#eventseries`;
 const ORGANIZATION_ID = 'https://riskacademy.blog/#organization';
 const WEBSITE_ID = `${SITE_ORIGIN}#website`;
 const EVENT_2026_ID = 'https://2026.riskawarenessweek.com#event';
+// Must match the @id used by <FAQSchema /> (rendered as a sibling top-level blob).
+// We reference it from WebSite.hasPart so that WebSite becomes the natural root
+// of the graph in validator UIs, with FAQPage nested under it.
+const FAQ_PAGE_ID = `${SITE_ORIGIN}/#faq`;
 
 // Person nodes for the @graph. Six headline speakers get their own canonical URL
 // (/speakers/<slug>) — that page also emits the same Person with the same @id, so the
@@ -383,6 +387,12 @@ export default function JsonLd() {
         'url': SITE_ORIGIN,
         'name': 'Risk Awareness Week Official Site',
         'publisher': { '@id': ORGANIZATION_ID },
+        // mainEntity points to EventSeries — the site IS about the conference series.
+        // hasPart points to FAQPage — the FAQ is a section of the site.
+        // These back-references make WebSite the natural root in validator.schema.org
+        // (since FAQPage is now referenced by WebSite.hasPart, it stops being "root").
+        'mainEntity': { '@id': EVENT_SERIES_ID },
+        'hasPart': [{ '@id': FAQ_PAGE_ID }],
     };
 
     // Each entity is emitted as its own top-level <script type="application/ld+json">
