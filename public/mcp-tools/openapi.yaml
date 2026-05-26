@@ -390,9 +390,9 @@ components:
           type: array
           items: { $ref: '#/components/schemas/Topic' }
         matched:
-          oneOf:
-            - { $ref: '#/components/schemas/Topic' }
-            - { type: 'null' }
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/Topic'
         scheduleUrl: { type: string, format: uri }
 
     RegisterLeadResult:
