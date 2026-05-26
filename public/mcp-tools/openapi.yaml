@@ -11,11 +11,11 @@ info:
     tool alongside the built-in brand tools (get_company_info, search_content, etc.).
 
     Tools planned (D2 / PM-175):
-      - search_speakers     (this revision — first cut)
+      - search_speakers     (this revision -- first cut)
       - get_event_overview  (next)
       - get_pricing         (next)
       - get_session         (next, requires sessions data import from 2026.*)
-      - register_lead       (next, wraps existing /api/subscribe → Brevo)
+      - register_lead       (next, wraps existing /api/subscribe -> Brevo)
 
 servers:
   - url: https://www.riskawarenessweek.com
@@ -73,7 +73,7 @@ paths:
                     description: Total number of speakers that matched before `limit`.
                   returned:
                     type: integer
-                    description: Number of items in `results` (≤ limit).
+                    description: Number of items in `results` (<= limit).
                   results:
                     type: array
                     items:
