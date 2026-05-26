@@ -16,6 +16,14 @@ export interface PricingTier {
     earlyBird: boolean;
     note?: string;
     includes: string[];
+    // HeySummit ticket id (from data-ticket attribute on the checkout page).
+    // Used to build deep-links that scroll to the specific tier card.
+    heySummitTicketId: number;
+    // Deep-link URL to HeySummit checkout, UTM-tagged for AI-source attribution.
+    // GA4 receives utm_source=mcp / utm_medium=ai / utm_campaign=raw2026 /
+    // utm_content=<tier id>, and the #ticket-checkoutmode-<id> hash scrolls
+    // the user to the right tier.
+    purchaseUrl: string;
 }
 
 export interface Pricing {
@@ -45,6 +53,9 @@ export const PRICING: Pricing = {
                 'CPD certified certificate of attendance',
                 'Free access to all RAW2025 replays',
             ],
+            heySummitTicketId: 332443,
+            purchaseUrl:
+                'https://2026.riskawarenessweek.com/checkout/select-tickets/?utm_source=mcp&utm_medium=ai&utm_campaign=raw2026&utm_content=phase1_free#ticket-checkoutmode-332443',
         },
         {
             id: 'phase2_individual',
@@ -61,6 +72,9 @@ export const PRICING: Pricing = {
                 '12-month replay access',
                 'CPD certified certificate of attendance',
             ],
+            heySummitTicketId: 332449,
+            purchaseUrl:
+                'https://2026.riskawarenessweek.com/checkout/select-tickets/?utm_source=mcp&utm_medium=ai&utm_campaign=raw2026&utm_content=phase2_individual#ticket-checkoutmode-332449',
         },
         {
             id: 'phase2_corporate',
@@ -78,6 +92,9 @@ export const PRICING: Pricing = {
                 'Up to 50 participants',
                 '2 hours of consultation',
             ],
+            heySummitTicketId: 332444,
+            purchaseUrl:
+                'https://2026.riskawarenessweek.com/checkout/select-tickets/?utm_source=mcp&utm_medium=ai&utm_campaign=raw2026&utm_content=phase2_corporate#ticket-checkoutmode-332444',
         },
     ],
     notes: [

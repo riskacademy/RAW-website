@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: RAW2026 Event Tools
-  version: 0.2.0
+  version: 0.3.0
   description: |
     Event-specific MCP tools for Risk Awareness Week 2026.
 
@@ -14,8 +14,9 @@ info:
       - search_speakers
       - get_event_overview
       - get_pricing
-      - get_session         (topic-level until per-session schedule is published)
-      - register_lead       (writes to Brevo via /api/subscribe Brevo integration)
+      - get_session                  (topic-level until per-session schedule is published)
+      - register_lead                (writes to Brevo via /api/subscribe Brevo integration)
+      - get_ticket_purchase_link     (HeySummit deep-link with UTM attribution; safe, no payment processing)
 
 servers:
   - url: https://www.riskawarenessweek.com
@@ -175,6 +176,64 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SessionDispatch'
+
+  /api/mcp-tools/buy-ticket:
+    get:
+      operationId: get_ticket_purchase_link
+      summary: Get a HeySummit deep-link to buy a RAW2026 ticket
+      description: |
+        Returns a UTM-tagged URL that takes the user directly to the
+        HeySummit checkout, anchored to the requested tier. Use this when
+        the user expresses intent to buy a ticket (e.g. "I want to buy a
+        Phase 2 ticket", "register me for Corporate"). Use `get_pricing`
+        instead when the user is just asking how much things cost.
+
+        Payment is processed by HeySummit on their own checkout page.
+        This tool only generates the link -- it does NOT collect card
+        details, does NOT charge the user, and does NOT have any
+        write-side effects. Safe for AI assistants.
+
+        Parameters:
+          - `tier` (optional) -- which tier to deep-link to. Accepts canonical
+            ids (`phase1_free`, `phase2_individual`, `phase2_corporate`) and
+            common aliases (`phase1`, `phase2`, `corporate`, `individual`,
+            `free`, `hard-reset`, `corporate-pass`, etc.). If omitted,
+            returns deep-links for all 3 tiers so the agent can present a choice.
+          - `quantity` (optional) -- number of seats the user wants (default 1).
+            Echoed in the response; HeySummit handles the actual quantity input.
+
+        Each link includes UTM params (`utm_source=mcp`, `utm_medium=ai`,
+        `utm_campaign=raw2026`, `utm_content=<tier id>`) so the conference
+        organiser can attribute conversions to AI-assistant traffic in GA4.
+      parameters:
+        - in: query
+          name: tier
+          required: false
+          description: Tier id or alias to deep-link to. Omit to get all tiers.
+          schema:
+            type: string
+            example: phase2_individual
+        - in: query
+          name: quantity
+          required: false
+          description: Number of seats the user wants (default 1).
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+      responses:
+        '200':
+          description: Purchase deep-link(s) for the requested tier(s).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseLinkResult'
+        '400':
+          description: Unknown tier id / alias.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToolError'
 
   /api/mcp-tools/register-lead:
     post:
@@ -344,26 +403,67 @@ components:
         tiers:
           type: array
           items:
-            type: object
-            properties:
-              id: { type: string }
-              name: { type: string }
-              phase: { type: string }
-              dates: { type: string }
-              priceUSD: { type: number }
-              priceDisplay: { type: string }
-              perSeat: { type: boolean }
-              seats: { type: integer }
-              earlyBird: { type: boolean }
-              note: { type: string }
-              includes:
-                type: array
-                items: { type: string }
+            $ref: '#/components/schemas/PricingTier'
         notes:
           type: array
           items: { type: string }
         ticketsUrl: { type: string, format: uri }
         cfoJustificationAvailable: { type: boolean }
+
+    PricingTier:
+      type: object
+      required: [id, name, phase, dates, priceUSD, priceDisplay, perSeat, heySummitTicketId, purchaseUrl]
+      properties:
+        id: { type: string, enum: [phase1_free, phase2_individual, phase2_corporate] }
+        name: { type: string }
+        phase: { type: string, enum: [phase1, phase2] }
+        dates: { type: string }
+        priceUSD: { type: number }
+        priceDisplay: { type: string }
+        perSeat: { type: boolean }
+        seats: { type: integer }
+        earlyBird: { type: boolean }
+        note: { type: string }
+        includes:
+          type: array
+          items: { type: string }
+        heySummitTicketId:
+          type: integer
+          description: Internal HeySummit ticket id (from `data-ticket` on the checkout DOM).
+        purchaseUrl:
+          type: string
+          format: uri
+          description: UTM-tagged deep-link to the HeySummit checkout, anchored to this tier's card.
+
+    PurchaseLinkResult:
+      type: object
+      required: [quantity, links, currency, ticketsPageUrl]
+      properties:
+        quantity: { type: integer }
+        links:
+          type: array
+          items:
+            type: object
+            required: [tier, purchaseUrl, paymentProvider, paymentNotice]
+            properties:
+              tier:
+                type: object
+                properties:
+                  id: { type: string }
+                  name: { type: string }
+                  phase: { type: string }
+                  dates: { type: string }
+                  priceUSD: { type: number }
+                  priceDisplay: { type: string }
+                  perSeat: { type: boolean }
+                  seats: { type: integer }
+              purchaseUrl: { type: string, format: uri }
+              paymentProvider: { type: string, example: "HeySummit" }
+              paymentNotice: { type: string }
+              note: { type: string }
+        currency: { type: string }
+        cfoJustificationAvailable: { type: boolean }
+        ticketsPageUrl: { type: string, format: uri }
 
     Topic:
       type: object
