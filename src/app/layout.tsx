@@ -73,8 +73,14 @@ export default function RootLayout({
         <link
           rel="alternate"
           type="application/json"
-          href="https://mcp.riskawarenessweek.com/.well-known/mcp.json"
-          title="MCP server"
+          href="https://www.riskawarenessweek.com/.well-known/mcp.json"
+          title="MCP server descriptor"
+        />
+        <link
+          rel="alternate"
+          type="application/yaml"
+          href="https://www.riskawarenessweek.com/mcp-tools/openapi.yaml"
+          title="MCP tools OpenAPI spec"
         />
         <link
           rel="alternate"

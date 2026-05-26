@@ -1,0 +1,79 @@
+{
+  "$schema": "https://www.riskawarenessweek.com/.well-known/mcp.json",
+  "name": "Risk Awareness Week",
+  "shortName": "RAW2026",
+  "description": "Read-only Model Context Protocol server for Risk Awareness Week 2026 — the world's largest virtual risk-management & AI conference (12-16 October 2026, fully virtual). Search speakers, get event overview, pricing, topic tracks, generate ticket purchase links, and register email leads.",
+  "tagline": "RAW2026 - virtual risk-management & AI conference",
+  "version": "0.3.0",
+  "endpoint": {
+    "url": "https://mcp.riskawarenessweek.com",
+    "transport": "streamable-http",
+    "protocolVersion": "2025-03-26",
+    "authentication": "none"
+  },
+  "tools": [
+    { "name": "search_speakers", "title": "Search RAW2026 speakers", "readOnly": true },
+    { "name": "get_event_overview", "title": "Get RAW2026 event overview", "readOnly": true },
+    { "name": "get_pricing", "title": "Get current RAW2026 ticket pricing", "readOnly": true },
+    { "name": "get_session", "title": "Get RAW2026 session info (topic-level dispatch)", "readOnly": true },
+    { "name": "get_ticket_purchase_link", "title": "Get a HeySummit deep-link to buy a RAW2026 ticket", "readOnly": true },
+    { "name": "register_lead", "title": "Register an email lead for RAW2026", "readOnly": false },
+    { "name": "get_company_info", "title": "Get Company Info", "readOnly": true },
+    { "name": "search_products", "title": "Search Products", "readOnly": true },
+    { "name": "get_faq", "title": "Get FAQ", "readOnly": true },
+    { "name": "get_structured_data", "title": "Get Structured Data", "readOnly": true },
+    { "name": "get_brand_voice", "title": "Get Brand Voice", "readOnly": true },
+    { "name": "search_content", "title": "Search Content", "readOnly": true }
+  ],
+  "links": {
+    "installGuide": "https://www.riskawarenessweek.com/mcp",
+    "openapi": "https://www.riskawarenessweek.com/mcp-tools/openapi.yaml",
+    "llmsTxt": "https://www.riskawarenessweek.com/llms.txt",
+    "privacy": "https://www.riskawarenessweek.com/privacy",
+    "terms": "https://www.riskawarenessweek.com/terms",
+    "eventSite": "https://2026.riskawarenessweek.com",
+    "brandSite": "https://www.riskawarenessweek.com",
+    "sourceRepoEventTools": "https://github.com/riskacademy/RAW-website",
+    "sourceRepoMcpHost": "https://github.com/rankcaster/rankcaster"
+  },
+  "maintainer": {
+    "name": "RISK-ACADEMY LTD.",
+    "url": "https://riskacademy.ai/",
+    "contactEmail": "alex.ausrisk@gmail.com"
+  },
+  "discovery": {
+    "verify": {
+      "initialize": {
+        "method": "POST",
+        "url": "https://mcp.riskawarenessweek.com/",
+        "headers": {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text/event-stream"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "method": "initialize",
+          "params": {
+            "protocolVersion": "2025-03-26",
+            "capabilities": {},
+            "clientInfo": { "name": "verify", "version": "0.1" }
+          }
+        }
+      },
+      "toolsList": {
+        "method": "POST",
+        "url": "https://mcp.riskawarenessweek.com/",
+        "headers": {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text/event-stream"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "method": "tools/list"
+        }
+      }
+    }
+  }
+}
