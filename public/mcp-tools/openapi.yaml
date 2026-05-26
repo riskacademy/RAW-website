@@ -1,0 +1,150 @@
+openapi: 3.0.3
+info:
+  title: RAW2026 Event Tools
+  version: 0.1.0
+  description: |
+    Event-specific MCP tools for Risk Awareness Week 2026.
+
+    This OpenAPI spec is attached to the RAW report in RankCaster (column
+    `mcp_hosted_server.custom_openapi_spec`). RankCaster's mcp-server
+    parses it on initialize and registers each `operationId` as an MCP
+    tool alongside the built-in brand tools (get_company_info, search_content, etc.).
+
+    Tools planned (D2 / PM-175):
+      - search_speakers     (this revision — first cut)
+      - get_event_overview  (next)
+      - get_pricing         (next)
+      - get_session         (next, requires sessions data import from 2026.*)
+      - register_lead       (next, wraps existing /api/subscribe → Brevo)
+
+servers:
+  - url: https://www.riskawarenessweek.com
+    description: Production (Vercel)
+
+paths:
+  /api/mcp-tools/search-speakers:
+    get:
+      operationId: search_speakers
+      summary: Search RAW2026 speakers
+      description: |
+        Search the Risk Awareness Week speakers roster (RAW2026 faculty plus
+        notable alumni). Case-insensitive substring match across speaker name,
+        role, organization, topics they know about (`knowsAbout`), and short
+        bio. Empty or omitted `q` returns the full roster.
+
+        Useful for AI agents answering questions like "who is speaking at RAW
+        about quantitative risk?", "is Doug Hubbard speaking?", or "list
+        speakers from probability management".
+
+        Each result includes the canonical brand-site URL (`url`) and the
+        current-event page on `2026.riskawarenessweek.com` (`raw2026Url`) so
+        agents can deep-link users to authoritative sources.
+      parameters:
+        - in: query
+          name: q
+          required: false
+          description: Free-text search query. Empty string returns all speakers.
+          schema:
+            type: string
+            example: quantitative risk
+        - in: query
+          name: limit
+          required: false
+          description: Maximum results to return (default 50, hard cap 50).
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 50
+            default: 50
+      responses:
+        '200':
+          description: List of matching speakers.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [query, total, returned, results]
+                properties:
+                  query:
+                    type: string
+                    description: Echo of the input query.
+                  total:
+                    type: integer
+                    description: Total number of speakers that matched before `limit`.
+                  returned:
+                    type: integer
+                    description: Number of items in `results` (≤ limit).
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Speaker'
+
+components:
+  schemas:
+    Speaker:
+      type: object
+      required:
+        - slug
+        - name
+        - role
+        - organization
+        - shortBio
+        - url
+        - image
+        - knowsAbout
+        - sameAs
+        - isHeadlineSpeaker
+        - isAlumni
+      properties:
+        slug:
+          type: string
+          description: URL-safe identifier, used in canonical speaker page path.
+          example: douglas-hubbard
+        name:
+          type: string
+          example: Douglas Hubbard
+        role:
+          type: string
+          description: Short role label suitable for cards.
+          example: Founder & President, Hubbard Decision Research
+        organization:
+          type: object
+          required: [name, url]
+          properties:
+            name:
+              type: string
+            url:
+              type: string
+              format: uri
+        shortBio:
+          type: string
+          description: One-sentence bio (full bio lives on the speaker's page).
+        url:
+          type: string
+          format: uri
+          description: Canonical brand-site speaker page on www.riskawarenessweek.com.
+        raw2026Url:
+          type: string
+          format: uri
+          description: Current-event speaker page on 2026.riskawarenessweek.com (may be omitted for alumni linking to a past-year page).
+        image:
+          type: string
+          format: uri
+          description: Speaker portrait URL.
+        knowsAbout:
+          type: array
+          items:
+            type: string
+          description: Topics the speaker is known for (used for topical matching).
+        sameAs:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: Canonical external identity URLs (LinkedIn, personal site, Wikipedia, etc.).
+        isHeadlineSpeaker:
+          type: boolean
+          description: True for the headline faculty featured on the brand site hero.
+        isAlumni:
+          type: boolean
+          description: True if this person spoke at a previous RAW edition rather than RAW2026.
