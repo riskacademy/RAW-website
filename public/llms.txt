@@ -46,9 +46,10 @@
 
 ## Agentic interface (MCP)
 
-- [MCP endpoint](https://mcp.riskawarenessweek.com/) — Model Context Protocol server.
-  Tools: `search_speakers(query)`, `get_session(date|topic)`, `get_pricing()`, `get_event_overview()`, `register_lead(email,interest)`.
-- [MCP discovery](https://mcp.riskawarenessweek.com/.well-known/mcp.json)
+- [MCP endpoint](https://mcp.riskawarenessweek.com/) — Model Context Protocol server (Streamable HTTP, MCP 2025-03-26). No auth, read-only except `register_lead`.
+- [Install guide](https://www.riskawarenessweek.com/mcp) — one-click setup for Claude Desktop, Claude.ai, ChatGPT, Cursor, Windsurf, Gemini, Smithery.
+- [OpenAPI spec](https://www.riskawarenessweek.com/mcp-tools/openapi.yaml) — full contract for the 5 event-specific tools.
+- Tools (11): `search_speakers`, `get_event_overview`, `get_pricing`, `get_session`, `register_lead` (event-specific) + `get_company_info`, `search_products`, `get_faq`, `get_structured_data`, `get_brand_voice`, `search_content` (brand-level via RankCaster).
 
 ## Open data
 
