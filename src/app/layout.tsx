@@ -7,6 +7,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import FAQSchema from "@/components/seo/FAQSchema";
 import GA4 from "@/components/analytics/GA4";
 import AISourceTracker from "@/components/analytics/AISourceTracker";
+import RCAITraffic from "@/components/analytics/RCAITraffic";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -97,6 +98,7 @@ export default function RootLayout({
         <FAQSchema />
         <GA4 />
         <AISourceTracker />
+        <RCAITraffic />
       </body>
     </html>
   );
