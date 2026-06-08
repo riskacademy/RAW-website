@@ -7,7 +7,6 @@ import JsonLd from "@/components/seo/JsonLd";
 import FAQSchema from "@/components/seo/FAQSchema";
 import GA4 from "@/components/analytics/GA4";
 import AISourceTracker from "@/components/analytics/AISourceTracker";
-import RCAITraffic from "@/components/analytics/RCAITraffic";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -89,6 +88,12 @@ export default function RootLayout({
           href="https://www.riskawarenessweek.com/llms.txt"
           title="llms.txt"
         />
+        {/* RC AI traffic tracker — raw <script> so it appears in SSR HTML for verification */}
+        <script
+          async
+          src="https://metrics.riskawarenessweek.com/rc-ai-traffic.js"
+          data-site="rc_086d9feb3971c2ff"
+        />
       </head>
       <body className={`${inter.variable} antialiased`}>
         <Header />
@@ -98,7 +103,6 @@ export default function RootLayout({
         <FAQSchema />
         <GA4 />
         <AISourceTracker />
-        <RCAITraffic />
       </body>
     </html>
   );
