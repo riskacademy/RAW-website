@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import SectionHeader from '../ui/SectionHeader';
 import Card from '../ui/Card';
-import { HEADLINE_SPEAKERS } from '@/data/speakers';
+import { HEADLINE_SPEAKERS, speakers } from '@/data/speakers';
 
 export default function Faculty() {
     return (
@@ -87,6 +87,15 @@ export default function Faculty() {
                             </div>
                         </Card>
                     ))}
+                </div>
+
+                <div className="text-center mt-12">
+                    <Link
+                        href="/speakers"
+                        className="inline-block text-purple-300 hover:text-purple-200 font-medium underline-offset-4 hover:underline"
+                    >
+                        View all RAW faculty ({speakers.length} profiles) →
+                    </Link>
                 </div>
             </div>
         </section>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import SectionHeader from '../ui/SectionHeader';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
@@ -27,7 +28,7 @@ export default function PastEvents() {
         {
             year: '2022',
             theme: 'The Psychology of Risk',
-            description: 'Overcome cognitive biases in risk identification. Combine behavioral science with quantitative methods. 4,406 participants from 120+ countries.',
+            description: 'Overcome cognitive biases in risk identification. Combine behavioral science with quantitative methods. 4,400+ participants from 120+ countries.',
             keynote: null
         },
         {
@@ -123,17 +124,33 @@ export default function PastEvents() {
                                 </p>
                             )}
 
-                            <Button
-                                href={`https://${event.year}.riskawarenessweek.com`}
-                                variant="secondary"
-                                className="w-full text-sm py-3 mt-auto"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Access RAW {event.year}
-                            </Button>
+                            <div className="mt-auto flex flex-col gap-2">
+                                <Link
+                                    href={`/archive/${event.year}`}
+                                    className="block w-full text-center text-sm py-3 border-2 border-purple-500 text-purple-300 rounded-full font-semibold hover:bg-purple-500/10 transition-colors"
+                                >
+                                    Read about RAW {event.year} →
+                                </Link>
+                                <a
+                                    href={`https://${event.year}.riskawarenessweek.com`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block w-full text-center text-xs text-gray-500 hover:text-purple-300 underline-offset-4 hover:underline"
+                                >
+                                    Open the original RAW {event.year} site
+                                </a>
+                            </div>
                         </Card>
                     ))}
+                </div>
+
+                <div className="text-center" style={{ marginTop: '48px' }}>
+                    <Link
+                        href="/archive"
+                        className="inline-block text-purple-300 hover:text-purple-200 font-medium underline-offset-4 hover:underline"
+                    >
+                        Browse the full RAW archive (2019–2025) →
+                    </Link>
                 </div>
             </div>
         </section>

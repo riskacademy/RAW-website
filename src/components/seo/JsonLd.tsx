@@ -1,5 +1,6 @@
 import React from 'react';
 import { speakers, speakerPersonId, SITE_ORIGIN } from '@/data/speakers';
+import { ARCHIVE_YEARS, eventIdForYear } from '@/data/archive';
 import { ATTENDEE_REVIEWS } from '@/data/reviews';
 import { FEATURED_VIDEOS, videoContentUrl, videoEmbedUrl, videoThumbnailUrl } from '@/data/videos';
 
@@ -12,10 +13,10 @@ const EVENT_2026_ID = 'https://2026.riskawarenessweek.com#event';
 // of the graph in validator UIs, with FAQPage nested under it.
 const FAQ_PAGE_ID = `${SITE_ORIGIN}/#faq`;
 
-// Person nodes for the @graph. Six headline speakers get their own canonical URL
-// (/speakers/<slug>) — that page also emits the same Person with the same @id, so the
-// duplicate graph entries collapse cleanly. The four "stub" speakers (Grant, Geoff,
-// Hans, David) live only on the brand site.
+// Person nodes for the @graph. Every speaker now has a canonical /speakers/<slug>
+// page (headline + alumni), so mainEntityOfPage always resolves to a 200. The
+// per-page Person blob emitted by /speakers/[slug]/page.tsx uses the same @id,
+// so the duplicate graph entries collapse cleanly.
 function buildPersonNodes() {
     return speakers.map((s) => {
         const node: Record<string, unknown> = {
@@ -49,143 +50,37 @@ function buildPersonNodes() {
     });
 }
 
+// Past-edition sub-events are derived from src/data/archive.ts so that the
+// description/name/dates here stay in lock-step with what the /archive/<year>
+// page renders. The /archive/<year> page emits an EducationEvent node with the
+// SAME @id (eventIdForYear(year)) — using the same `summary` field here means
+// both blobs carry identical descriptions, so Google sees one consistent entity
+// rather than two competing payloads.
+const PAST_SUB_EVENTS = ARCHIVE_YEARS.map((y) => ({
+    '@type': 'EducationEvent' as const,
+    '@id': eventIdForYear(y.year),
+    'name': y.name,
+    'alternateName': `RAW${y.year}`,
+    'url': y.heySummitUrl,
+    'description': y.summary,
+    'startDate': y.startDate,
+    'endDate': y.endDate,
+    'eventStatus': 'https://schema.org/EventScheduled',
+    'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
+    'location': {
+        '@type': 'VirtualLocation',
+        'url': y.heySummitUrl,
+    },
+    'organizer': { '@id': ORGANIZATION_ID },
+    'superEvent': { '@id': EVENT_SERIES_ID },
+    'about': y.keyTopics.map((t) => ({ '@type': 'Thing', name: t })),
+    // mainEntityOfPage points at the on-site canonical page for that edition.
+    'mainEntityOfPage': `${SITE_ORIGIN}/archive/${y.year}`,
+}));
+
 const SUB_EVENTS = [
     { '@id': EVENT_2026_ID },
-    {
-        '@type': 'EducationEvent',
-        '@id': 'https://2025.riskawarenessweek.com#event',
-        'name': 'Risk Awareness Week 2025',
-        'alternateName': 'RAW2025',
-        'url': 'https://2025.riskawarenessweek.com/',
-        'description':
-            'RISK AWARENESS WEEK 2025 — virtual conference on quantitative risk methods and decision integration. Network with over 5,000 risk and insurance professionals. Focus: when quantitative methods add value to decisions, mastering practical techniques from decision trees to Monte Carlo simulations.',
-        'startDate': '2025-10-13',
-        'endDate': '2025-10-17',
-        'eventStatus': 'https://schema.org/EventScheduled',
-        'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
-        'location': {
-            '@type': 'VirtualLocation',
-            'url': 'https://2025.riskawarenessweek.com/',
-        },
-        'organizer': { '@id': ORGANIZATION_ID },
-        'superEvent': { '@id': EVENT_SERIES_ID },
-    },
-    {
-        '@type': 'EducationEvent',
-        '@id': 'https://2024.riskawarenessweek.com#event',
-        'name': 'Risk Awareness Week 2024 — The AI Revolution',
-        'alternateName': 'RAW2024',
-        'url': 'https://2024.riskawarenessweek.com/',
-        'description':
-            "RISK AWARENESS WEEK 2024 dedicated to application of AI in risk-based decision making. 'Don't lose your job to AI — supercharge your risk management team and level up your AI skills with expert insights and hands-on workshops.' Multi-language dubbing (English, Spanish, Brazilian Portuguese). Winner of FERMA's 2024 Training & Education Programme of the Year.",
-        'startDate': '2024-10-07',
-        'endDate': '2024-10-11',
-        'eventStatus': 'https://schema.org/EventScheduled',
-        'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
-        'location': {
-            '@type': 'VirtualLocation',
-            'url': 'https://2024.riskawarenessweek.com/',
-        },
-        'organizer': { '@id': ORGANIZATION_ID },
-        'superEvent': { '@id': EVENT_SERIES_ID },
-        // NB: schema.org Event has no `award` property. The FERMA win is asserted in
-        // description text instead (where Google's NLP can still parse it).
-    },
-    {
-        '@type': 'EducationEvent',
-        '@id': 'https://2023.riskawarenessweek.com#event',
-        'name': 'Risk Awareness Week 2023',
-        'alternateName': 'RAW2023',
-        'url': 'https://2023.riskawarenessweek.com/',
-        'description':
-            'RISK AWARENESS WEEK 2023 — the ultimate online risk management and decision-making experience. Quantitative risk management practices in a digestible and practical format, at a fraction of the cost of traditional conferences. Featured Douglas Hubbard, Sam Savage, Michele Wucker, Hernan Huwyler.',
-        'startDate': '2023-10-09',
-        'endDate': '2023-10-13',
-        'eventStatus': 'https://schema.org/EventScheduled',
-        'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
-        'location': {
-            '@type': 'VirtualLocation',
-            'url': 'https://2023.riskawarenessweek.com/',
-        },
-        'organizer': { '@id': ORGANIZATION_ID },
-        'superEvent': { '@id': EVENT_SERIES_ID },
-    },
-    {
-        '@type': 'EducationEvent',
-        '@id': 'https://2022.riskawarenessweek.com#event',
-        'name': 'Risk Awareness Week 2022',
-        'alternateName': 'RAW2022',
-        'url': 'https://2022.riskawarenessweek.com/',
-        'description':
-            'RISK AWARENESS WEEK 2022 — the biggest global online platform to learn risk management and decision making. Practical case studies on integrating risk management into decision making, planning and core business processes. By 2022, 15,000+ participants had attended RAW workshops over the previous three years.',
-        'startDate': '2022-10-17',
-        'endDate': '2022-10-21',
-        'eventStatus': 'https://schema.org/EventScheduled',
-        'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
-        'location': {
-            '@type': 'VirtualLocation',
-            'url': 'https://2022.riskawarenessweek.com/',
-        },
-        'organizer': { '@id': ORGANIZATION_ID },
-        'superEvent': { '@id': EVENT_SERIES_ID },
-    },
-    {
-        '@type': 'EducationEvent',
-        '@id': 'https://2021.riskawarenessweek.com#event',
-        'name': 'Risk Awareness Week 2021',
-        'alternateName': 'RAW2021',
-        'url': 'https://2021.riskawarenessweek.com/',
-        'description':
-            'RISK AWARENESS WEEK 2021 focused on climate and environmental decision making. International speakers shared practical case studies on integrating risk management into climate, environmental decision making, planning, project management and risk-adjusted performance management. 4,800+ participants.',
-        'startDate': '2021-10-11',
-        'endDate': '2021-10-15',
-        'eventStatus': 'https://schema.org/EventScheduled',
-        'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
-        'location': {
-            '@type': 'VirtualLocation',
-            'url': 'https://2021.riskawarenessweek.com/',
-        },
-        'organizer': { '@id': ORGANIZATION_ID },
-        'superEvent': { '@id': EVENT_SERIES_ID },
-    },
-    {
-        '@type': 'EducationEvent',
-        '@id': 'https://2020.riskawarenessweek.com#event',
-        'name': 'Risk Awareness Week 2020',
-        'alternateName': 'RAW2020',
-        'url': 'https://2020.riskawarenessweek.com/',
-        'description':
-            'RISK AWARENESS WEEK 2020 — biggest online platform to learn risk management and decision making. The pivot to fully virtual format during the global pandemic. International speakers ran online workshops on integrating risk management into decision making, planning and core business processes. 4,000+ participants.',
-        'startDate': '2020-10-12',
-        'endDate': '2020-10-16',
-        'eventStatus': 'https://schema.org/EventScheduled',
-        'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
-        'location': {
-            '@type': 'VirtualLocation',
-            'url': 'https://2020.riskawarenessweek.com/',
-        },
-        'organizer': { '@id': ORGANIZATION_ID },
-        'superEvent': { '@id': EVENT_SERIES_ID },
-    },
-    {
-        '@type': 'EducationEvent',
-        '@id': 'https://2019.riskawarenessweek.com#event',
-        'name': 'Risk Awareness Week 2019',
-        'alternateName': 'RAW2019',
-        'url': 'https://2019.riskawarenessweek.com/',
-        'description':
-            'Inaugural Risk Awareness Week — the launch year. Online workshops dedicated to integrating risk management into decision making, planning and core business processes. 3,700+ participants from 121 countries.',
-        'startDate': '2019-10-14',
-        'endDate': '2019-10-18',
-        'eventStatus': 'https://schema.org/EventScheduled',
-        'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
-        'location': {
-            '@type': 'VirtualLocation',
-            'url': 'https://2019.riskawarenessweek.com/',
-        },
-        'organizer': { '@id': ORGANIZATION_ID },
-        'superEvent': { '@id': EVENT_SERIES_ID },
-    },
+    ...PAST_SUB_EVENTS,
 ];
 
 const EVENT_2026 = {
@@ -388,11 +283,16 @@ export default function JsonLd() {
         'name': 'Risk Awareness Week Official Site',
         'publisher': { '@id': ORGANIZATION_ID },
         // mainEntity points to EventSeries — the site IS about the conference series.
-        // hasPart points to FAQPage — the FAQ is a section of the site.
-        // These back-references make WebSite the natural root in validator.schema.org
-        // (since FAQPage is now referenced by WebSite.hasPart, it stops being "root").
+        // hasPart points to FAQPage + the /speakers and /archive CollectionPages —
+        // these are the named subsections of the site. Each is emitted with the same
+        // @id from its own page, so the cross-references resolve cleanly in
+        // validator.schema.org.
         'mainEntity': { '@id': EVENT_SERIES_ID },
-        'hasPart': [{ '@id': FAQ_PAGE_ID }],
+        'hasPart': [
+            { '@id': FAQ_PAGE_ID },
+            { '@id': `${SITE_ORIGIN}/speakers#collection` },
+            { '@id': `${SITE_ORIGIN}/archive#collection` },
+        ],
     };
 
     // Each entity is emitted as its own top-level <script type="application/ld+json">

@@ -2,20 +2,29 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
-    HEADLINE_SPEAKERS,
+    speakers,
     getSpeakerBySlug,
     speakerPageUrl,
     speakerPersonId,
     SITE_ORIGIN,
     type Speaker,
 } from '@/data/speakers';
+import {
+    getAppearances,
+    getPublications,
+    getMetaDescription,
+    type Publication,
+} from '@/data/speaker-extras';
+import { getArchiveYear } from '@/data/archive';
 
 const EVENT_SERIES_ID = `${SITE_ORIGIN}#eventseries`;
 const ORGANIZATION_ID = 'https://riskacademy.blog/#organization';
 
 export function generateStaticParams() {
-    // Only headline speakers get a canonical /speakers/<slug>/ page.
-    return HEADLINE_SPEAKERS.map((s) => ({ slug: s.slug }));
+    // All speakers now get their own canonical page — including alumni and
+    // non-headline practitioners — so that JSON-LD Person nodes don't claim
+    // mainEntityOfPage URLs that 404 and so /speakers (index) links resolve.
+    return speakers.map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata(
@@ -23,11 +32,12 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     const { slug } = await props.params;
     const speaker = getSpeakerBySlug(slug);
-    if (!speaker || !speaker.isHeadlineSpeaker) {
+    if (!speaker) {
         return { title: 'Speaker not found — Risk Awareness Week' };
     }
     const title = `${speaker.name} — Risk Awareness Week Faculty`;
-    const description = `${speaker.role}. ${speaker.shortBio}.`;
+    const description =
+        getMetaDescription(speaker.slug) ?? `${speaker.role}. ${speaker.shortBio}.`;
     const url = speakerPageUrl(speaker.slug);
     return {
         title,
@@ -50,7 +60,7 @@ export async function generateMetadata(
     };
 }
 
-function buildPersonSchema(speaker: Speaker) {
+function buildPersonSchema(speaker: Speaker, publications: Publication[]) {
     const node: Record<string, unknown> = {
         '@context': 'https://schema.org',
         '@type': 'Person',
@@ -76,6 +86,23 @@ function buildPersonSchema(speaker: Speaker) {
     if (speaker.awards && speaker.awards.length) node['award'] = speaker.awards;
     if (speaker.slug === 'alex-sidorenko') {
         node['founder'] = { '@id': ORGANIZATION_ID };
+    }
+    // Author block — schema.org Person.author is valid for books and articles
+    // authored by this person. Each publication becomes a CreativeWork (Book by
+    // default, ScholarlyArticle for papers, DefinedTerm-style for standards).
+    if (publications.length > 0) {
+        node['author'] = publications.map((p) => {
+            const workType =
+                p.type === 'paper' ? 'ScholarlyArticle' : p.type === 'standard' ? 'CreativeWork' : 'Book';
+            const work: Record<string, unknown> = {
+                '@type': workType,
+                'name': p.title,
+            };
+            if (p.year) work['datePublished'] = String(p.year);
+            if (p.publisher) work['publisher'] = { '@type': 'Organization', name: p.publisher };
+            if (p.url) work['url'] = p.url;
+            return work;
+        });
     }
     return node;
 }
@@ -124,11 +151,13 @@ export default async function SpeakerPage(props: { params: Promise<{ slug: strin
     const { slug } = await props.params;
     const speaker = getSpeakerBySlug(slug);
 
-    if (!speaker || !speaker.isHeadlineSpeaker) {
+    if (!speaker) {
         notFound();
     }
 
-    const personSchema = buildPersonSchema(speaker);
+    const appearances = [...getAppearances(speaker.slug)].sort((a, b) => b.year - a.year);
+    const publications = getPublications(speaker.slug);
+    const personSchema = buildPersonSchema(speaker, publications);
 
     return (
         <>
@@ -144,7 +173,7 @@ export default async function SpeakerPage(props: { params: Promise<{ slug: strin
                             Home
                         </Link>
                         <span className="mx-2">/</span>
-                        <Link href="/#speakers" className="hover:text-purple-400 transition-colors">
+                        <Link href="/speakers" className="hover:text-purple-400 transition-colors">
                             Faculty
                         </Link>
                         <span className="mx-2">/</span>
@@ -216,6 +245,97 @@ export default async function SpeakerPage(props: { params: Promise<{ slug: strin
                                     </span>
                                 ))}
                             </div>
+                        </section>
+                    )}
+
+                    {appearances.length > 0 && (
+                        <section className="mb-12">
+                            <h2 className="text-2xl font-semibold text-white mb-4">
+                                Risk Awareness Week history
+                            </h2>
+                            <p className="text-gray-400 text-sm mb-6">
+                                {appearances.length === 1
+                                    ? `${speaker.givenName} delivered a session at the following RAW edition. Open the archive page for the full programme that year.`
+                                    : `${speaker.givenName} has delivered sessions at ${appearances.length} editions of Risk Awareness Week. Open each archive page for the full programme that year, or visit the original conference site for the session replays.`}
+                            </p>
+                            <ul className="space-y-3">
+                                {appearances.map((a) => {
+                                    const archiveYear = getArchiveYear(a.year);
+                                    return (
+                                        <li
+                                            key={a.year}
+                                            className="flex flex-col md:flex-row md:items-baseline md:gap-4 border-l-2 border-purple-500/30 pl-4"
+                                        >
+                                            <span className="text-purple-300 font-semibold w-24 flex-shrink-0">
+                                                RAW {a.year}
+                                            </span>
+                                            <div className="flex-1 text-gray-300 text-sm">
+                                                {archiveYear && (
+                                                    <span className="text-gray-400">{archiveYear.theme}</span>
+                                                )}
+                                                {a.note && (
+                                                    <span className="text-gray-500 italic"> — {a.note}</span>
+                                                )}
+                                                <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs">
+                                                    <Link
+                                                        href={`/archive/${a.year}`}
+                                                        className="text-purple-300 hover:text-purple-200 underline-offset-4 hover:underline"
+                                                    >
+                                                        View RAW {a.year} archive →
+                                                    </Link>
+                                                    {a.profileUrl && (
+                                                        <a
+                                                            href={a.profileUrl}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="text-gray-400 hover:text-purple-300 underline-offset-4 hover:underline"
+                                                        >
+                                                            Original speaker profile ({a.year})
+                                                        </a>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </section>
+                    )}
+
+                    {publications.length > 0 && (
+                        <section className="mb-12">
+                            <h2 className="text-2xl font-semibold text-white mb-4">Books & publications</h2>
+                            <ul className="space-y-4">
+                                {publications.map((p) => (
+                                    <li key={p.title} className="border-l-2 border-purple-500/30 pl-4">
+                                        <p className="text-gray-200">
+                                            {p.url ? (
+                                                <a
+                                                    href={p.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-white hover:text-purple-300 font-medium underline-offset-4 hover:underline"
+                                                >
+                                                    {p.title}
+                                                </a>
+                                            ) : (
+                                                <span className="text-white font-medium">{p.title}</span>
+                                            )}
+                                        </p>
+                                        <p className="text-gray-500 text-xs mt-1">
+                                            {[
+                                                p.year && String(p.year),
+                                                p.publisher,
+                                                p.coAuthor,
+                                                p.type === 'standard' && 'Industry standard',
+                                                p.type === 'paper' && 'Paper',
+                                            ]
+                                                .filter(Boolean)
+                                                .join(' · ')}
+                                        </p>
+                                    </li>
+                                ))}
+                            </ul>
                         </section>
                     )}
 
