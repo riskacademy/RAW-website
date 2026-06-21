@@ -319,8 +319,10 @@ export const speakers: Speaker[] = [
         shortBio: 'Creator of the Risk Type Compass; Chartered Psychologist (UCL)',
         fullBio:
             "Chartered Psychologist with a BSc in Psychology and an MSc in Educational Psychology from University College London (UCL). Honorary Research Fellow at UCL, formerly European Manager for The Psychological Corporation, with a long association with Hogan Assessment Systems. Creator of the Risk Type Compass — a behavioral instrument for understanding individual risk dispositions. Devotes time to research-based consultancy and innovative product development at PCL.",
+        // CloudFront returns 403 on the full-size original for Geoff (same as Sam and Leo);
+        // _square_large thumbnail is the highest-resolution variant publicly accessible.
         image:
-            'https://d2q846bclm63a8.cloudfront.net/media/uploads/events/risk-awareness-week-2025-copy/EoTw8NJFRikStJg6GFWhMk.png',
+            'https://d2q846bclm63a8.cloudfront.net/media/thumbnails/uploads/events/risk-awareness-week-2025-copy/EoTw8NJFRikStJg6GFWhMk.png_square_large.png',
         sameAs: [
             'https://www.psychological-consultancy.com/risk-type-compass/',
             'https://www.linkedin.com/in/geoff-trickey-9285772/',
